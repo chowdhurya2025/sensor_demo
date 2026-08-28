@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Traditional Delicacies & Street Food</title>
+  <style>
+    :root {
+      --primary: #c0392b;
+      --accent: #f39c12;
+      --bg: #0f0f11;
+      --card-bg: #1a1a1e;
+      --text: #ffffff;
+      --text-muted: #a0a0aa;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      text-align: center;
+      padding: 60px 20px;
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), 
+                  url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+      border-bottom: 3px solid var(--accent);
+    }
+
+    header h1 {
+      font-size: 3rem;
+      color: var(--accent);
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: #ddd;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    /* Animated Tok Fountain Canvas Section */
+    .fountain-container {
+      background: #151518;
+      border: 2px solid #333;
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 50px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .fountain-header {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .fountain-header h2 {
+      font-size: 2rem;
+      color: var(--accent);
+    }
+
+    .fountain-wrapper {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 340px;
+    }
+
+    #fountainCanvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .fuchka-display {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      gap: 20px;
+      margin-top: 120px;
+    }
+
+    .fuchka-ball {
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #f7dc6f, #b7950b, #7d6608);
+      box-shadow: inset -5px -5px 10px rgba(0,0,0,0.5), 0 5px 15px rgba(0,0,0,0.4);
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .fuchka-ball:hover {
+      transform: scale(1.15) translateY(-5px);
+    }
+
+    /* Food Grid */
+    .food-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+    }
+
+    .food-card {
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid #2a2a30;
+    }
+
+    .food-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 24px rgba(243, 156, 18, 0.2);
+    }
+
+    .img-container {
+      width: 100%;
+      height: 240px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .img-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .food-card:hover .img-container img {
+      transform: scale(1.08);
+    }
+
+    .card-content {
+      padding: 20px;
+    }
+
+    .card-title {
+      font-size: 1.4rem;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .card-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: var(--text-muted);
+      border-top: 1px solid #222;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Authentic Delicacies Showcase</h1>
+    <p>A Visual & Interactive Celebration of Iconic Street Foods</p>
+  </header>
+
+  <div class="container">
+
+    <!-- Interactive Fuchka & Tok Fountain Section -->
+    <div class="fountain-container">
+      <div class="fountain-header">
+        <h2>Fuchka & Live Tok Fountain</h2>
+        <p>Crispy hollow puris filled with spiced potato and chickpea mixture, drenched in continuous tamarind water (Tok).</p>
+      </div>
+      <div class="fountain-wrapper">
+        <canvas id="fountainCanvas"></canvas>
+        <div class="fuchka-display">
+          <div class="fuchka-ball" title="Click to dip in Tok!"></div>
+          <div class="fuchka-ball" title="Click to dip in Tok!"></div>
+          <div class="fuchka-ball" title="Click to dip in Tok!"></div>
+          <div class="fuchka-ball" title="Click to dip in Tok!"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Food Cards Grid -->
+    <div class="food-grid">
+
+      <!-- Fuchka -->
+      <div class="food-card">
+        <div class="img-container">
+          <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80" alt="Fuchka">
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">Fuchka</h3>
+          <p class="card-desc">Crispy fried spherical puri filled with spiced mashed potatoes, chickpeas, herbs, and served with sour and tangy tamarind water (tok).</p>
+        </div>
+      </div>
+
+      <!-- Doi Fuchka -->
+      <div class="food-card">
+        <div class="img-container">
+          <img src="https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=800&q=80" alt="Doi Fuchka">
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">Doi Fuchka</h3>
+          <p class="card-desc">Fuchka shells topped with sweetened yogurt, spicy chutneys, sev, and chopped coriander for a creamy, tangy explosion.</p>
+        </div>
+      </div>
+
+      <!-- Shingara -->
+      <div class="food-card">
+        <div class="img-container">
+          <img src="https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?auto=format&fit=crop&w=800&q=80" alt="Shingara">
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">Shingara</h3>
+          <p class="card-desc">Flaky, golden-fried pastry stuffed with spiced potato filling, peanuts, and seasonal vegetables.</p>
+        </div>
+      </div>
+
+      <!-- Shingara Chaat -->
+      <div class="food-card">
+        <div class="img-container">
+          <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=800&q=80" alt="Shingara Chaat">
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">Shingara Chaat</h3>
+          <p class="card-desc">Crushed hot shingaras topped with chickpea curry (ghugni), sweet yogurt, tamarind chutney, onions, and spicy chaat masala.</p>
+        </div>
+      </div>
+
+      <!-- Chicken Samosa -->
+      <div class="food-card">
+        <div class="img-container">
+          <img src="https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=800&q=80" alt="Chicken Samosa">
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">Chicken Samosa</h3>
+          <p class="card-desc">Triangular crisp pockets generously packed with minced chicken cooked with aromatic spices and herbs.</p>
+        </div>
+      </div>
+
+      <!-- Daal Puri -->
+      <div class="food-card">
+        <div class="img-container">
+          <img src="https://images.unsplash.com/photo-1626074353765-517a681e40be?auto=format&fit=crop&w=800&q=80" alt="Daal Puri">
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">Daal Puri</h3>
+          <p class="card-desc">Soft yet crispy deep-fried flatbread stuffed with spiced yellow lentil (chana daal) paste.</p>
+        </div>
+      </div>
+
+      <!-- Khichuri with Mejbani Gorur Mangsho -->
+      <div class="food-card">
+        <div class="img-container">
+          <img src="https://images.unsplash.com/photo-1546833998-877b37c2e5c6?auto=format&fit=crop&w=800&q=80" alt="Khichuri with Mejbani Gorur Mangsho">
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">Khichuri & Mejbani Beef</h3>
+          <p class="card-desc">Rich rice-and-lentil bhuna khichuri served alongside slow-cooked Chittagong-style traditional spicy beef curry.</p>
+        </div>
+      </div>
+
+      <!-- Chapli Kabaab with Puri -->
+      <div class="food-card">
+        <div class="img-container">
+          <img src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?auto=format&fit=crop&w=800&q=80" alt="Chapli Kabaab with Puri">
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">Chapli Kabaab with Puri</h3>
+          <p class="card-desc">Spicy pan-fried flat beef patty infused with pomegranate seeds and herbs, paired with fluffy hot puris.</p>
+        </div>
+      </div>
+
+      <!-- Steam Momos -->
+      <div class="food-card">
+        <div class="img-container">
+          <img src="https://images.unsplash.com/photo-1625220194771-7ebdea0b70b9?auto=format&fit=crop&w=800&q=80" alt="Steam Momos">
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">Steam Momos</h3>
+          <p class="card-desc">Delicate steamed dumplings stuffed with juicy minced chicken/vegetables, served with spicy red chili chutney.</p>
+        </div>
+      </div>
+
+      <!-- Jhol Momo -->
+      <div class="food-card">
+        <div class="img-container">
+          <img src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=800&q=80" alt="Jhol Momo">
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">Jhol Momo</h3>
+          <p class="card-desc">Steamed dumplings submerged in a bowl of warm, nutty, tangy, and spicy sesame-tomato broth (jhol).</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <p>Authentic Street Food Experience Page</p>
+  </footer>
+
+  <script>
+    // Tok Fountain Physics Animation using Canvas
+    const canvas = document.getElementById('fountainCanvas');
+    const ctx = canvas.getContext('2d');
+
+    function resizeCanvas() {
+      canvas.width = canvas.parentElement.clientWidth;
+      canvas.height = canvas.parentElement.clientHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    class TokParticle {
+      constructor() {
+        this.reset();
+      }
+
+      reset() {
+        this.x = canvas.width / 2 + (Math.random() * 20 - 10);
+        this.y = 120; // Fountain spout apex
+        this.vx = (Math.random() - 0.5) * 4;
+        this.vy = -(Math.random() * 4 + 6); // Upward spray
+        this.gravity = 0.25;
+        this.radius = Math.random() * 3 + 2;
+        // Tamarind (Tok) color spectrum (Brownish-greenish-amber)
+        const colors = ['#5c3a21', '#78471b', '#4d4216', '#6e5d1e'];
+        this.color = colors[Math.floor(Math.random() * colors.length)];
+        this.alpha = 0.8;
+      }
+
+      update() {
+        this.vy += this.gravity;
+        this.x += this.vx;
+        this.y += this.vy;
+
+        if (this.y > canvas.height) {
+          this.reset();
+        }
+      }
+
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.globalAlpha = this.alpha;
+        ctx.fill();
+        ctx.globalAlpha = 1.0;
+      }
+    }
+
+    const particles = Array.from({ length: 150 }, () => new TokParticle());
+
+    function drawFountainStructure() {
+      const centerX = canvas.width / 2;
+
+      // Draw Top Fountain Spout
+      ctx.fillStyle = '#444';
+      ctx.fillRect(centerX - 15, 115, 30, 15);
+      
+      // Tier Pipe
+      ctx.fillStyle = '#222';
+      ctx.fillRect(centerX - 5, 125, 10, 100);
+
+      // Liquid Pool at Base
+      ctx.beginPath();
+      ctx.ellipse(centerX, 210, 140, 20, 0, 0, Math.PI * 2);
+      ctx.fillStyle = '#4a2f16';
+      ctx.fill();
+      ctx.strokeStyle = '#6e5d1e';
+      ctx.lineWidth = 3;
+      ctx.stroke();
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      drawFountainStructure();
+
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+  </script>
+</body>
+</html>

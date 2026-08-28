@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Street Food Menu & Fountain</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #1a0f0d;
+            color: #fff;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 0;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: #ff9f43;
+            margin-bottom: 10px;
+        }
+
+        /* Tok Fountain Animation Section */
+        .fountain-section {
+            background: #2d1810;
+            border: 2px solid #ff9f43;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .fountain-container {
+            height: 200px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            margin-top: 20px;
+        }
+
+        .nozzle {
+            width: 20px;
+            height: 30px;
+            background: #888;
+            position: absolute;
+            top: 0;
+            border-radius: 5px;
+        }
+
+        .stream {
+            width: 8px;
+            height: 100%;
+            background: linear-gradient(to bottom, #8b0000, #d35400, #ff4500);
+            position: absolute;
+            top: 30px;
+            animation: flow 0.5s infinite linear;
+            box-shadow: 0 0 10px #ff4500;
+        }
+
+        @keyframes flow {
+            0% { opacity: 0.8; transform: scaleY(0.95); }
+            50% { opacity: 1; transform: scaleY(1.05); }
+            100% { opacity: 0.8; transform: scaleY(0.95); }
+        }
+
+        .bowl {
+            width: 150px;
+            height: 60px;
+            background: #d35400;
+            border-radius: 0 0 75px 75px;
+            border: 4px solid #e67e22;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .liquid {
+            width: 100%;
+            height: 80%;
+            background: #8b0000;
+            position: absolute;
+            bottom: 0;
+            animation: splash 1s infinite alternate;
+        }
+
+        @keyframes splash {
+            0% { transform: translateY(2px); }
+            100% { transform: translateY(-2px); }
+        }
+
+        /* Grid Layout */
+        .food-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .food-card {
+            background: #2a1a15;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .food-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .food-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .food-info {
+            padding: 15px;
+        }
+
+        .food-info h3 {
+            color: #ee5253;
+            margin-bottom: 8px;
+        }
+
+        .food-info p {
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Deshi Street Food Delights</h1>
+        <p>Authentic Flavors & Live Tok Fountain</p>
+    </header>
+
+    <div class="fountain-section">
+        <h2>Live Tamarind (Tok) Fountain</h2>
+        <p>Crispy Fuchka paired with continuous flowing sour tamarind water</p>
+        <div class="fountain-container">
+            <div class="nozzle"></div>
+            <div class="stream"></div>
+            <div class="bowl">
+                <div class="liquid"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="food-grid">
+
+        <div class="food-card">
+            <img src="http://googleusercontent.com/image_collection/image_retrieval/9269439015579798521_0" alt="Fuchka">
+            <div class="food-info">
+                <h3>Crispy Fuchka</h3>
+                <p>Crispy hollow puris filled with spicy mashed potatoes and chickpeas.</p>
+            </div>
+        </div>
+
+        <div class="food-card">
+            <img src="https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=600&q=80" alt="Doi Fuchka">
+            <div class="food-info">
+                <h3>Doi Fuchka</h3>
+                <p>Topped with sweetened curd, spices, coriander, and sev.</p>
+            </div>
+        </div>
+
+        <div class="food-card">
+            <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80" alt="Shingara">
+            <div class="food-info">
+                <h3>Shingara</h3>
+                <p>Flaky pastry stuffed with spiced potato and peanut filling.</p>
+            </div>
+        </div>
+
+        <div class="food-card">
+            <img src="https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=600&q=80" alt="Shingara Chaat">
+            <div class="food-info">
+                <h3>Shingara Chaat</h3>
+                <p>Crushed shingara topped with chickpeas, yogurt, and tangy chutneys.</p>
+            </div>
+        </div>
+
+        <div class="food-card">
+            <img src="https://images.unsplash.com/photo-1541696432-82c6da8ce7bf?auto=format&fit=crop&w=600&q=80" alt="Chicken Samosa">
+            <div class="food-info">
+                <h3>Chicken Samosa</h3>
+                <p>Crispy triangular shells stuffed with minced spiced chicken.</p>
+            </div>
+        </div>
+
+        <div class="food-card">
+            <img src="https://images.unsplash.com/photo-1626132647523-66f5bf380027?auto=format&fit=crop&w=600&q=80" alt="Daal Puri">
+            <div class="food-info">
+                <h3>Daal Puri</h3>
+                <p>Soft puffed flatbread stuffed with spiced lentil paste.</p>
+            </div>
+        </div>
+
+        <div class="food-card">
+            <img src="https://images.unsplash.com/photo-1645177628172-a94c1f96e6db?auto=format&fit=crop&w=600&q=80" alt="Khichuri with Mejbani Beef">
+            <div class="food-info">
+                <h3>Bhuna Khichuri with Mejbani Gorur Mangsho</h3>
+                <p>Aromatic rice-lentil dish served with spicy traditional Chittagong Mejbani beef.</p>
+            </div>
+        </div>
+
+        <div class="food-card">
+            <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=600&q=80" alt="Chapli Kebab with Puri">
+            <div class="food-info">
+                <h3>Chapli Kebab with Puri</h3>
+                <p>Minced meat patty infused with spices, served with hot puris.</p>
+            </div>
+        </div>
+
+        <div class="food-card">
+            <img src="https://images.unsplash.com/photo-1625220194771-7ebdea0b70b9?auto=format&fit=crop&w=600&q=80" alt="Steamed Momos">
+            <div class="food-info">
+                <h3>Steamed Momos</h3>
+                <p>Juicy dumplings served with hot red chili chutney.</p>
+            </div>
+        </div>
+
+        <div class="food-card">
+            <img src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=600&q=80" alt="Jhol Momo">
+            <div class="food-info">
+                <h3>Jhol Momo</h3>
+                <p>Dumplings served in a rich, tangy, and spicy sesame-tomato broth.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Simple interactive click event on food cards
+        document.querySelectorAll('.food-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const title = card.querySelector('h3').innerText;
+                alert('Apni select korechen: ' + title);
+            });
+        });
+    </script>
+</body>
+</html>

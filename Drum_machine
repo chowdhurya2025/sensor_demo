@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Drum Machine</title>
+
+    <style>
+        /* =========================
+           CSS - HOW THE PAGE LOOKS
+           ========================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #111827;
+            color: white;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .description {
+            text-align: center;
+            color: #9ca3af;
+            margin-bottom: 30px;
+        }
+
+        /* Controls */
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        button {
+            border: none;
+            border-radius: 8px;
+            padding: 12px 18px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+            background: #374151;
+            color: white;
+        }
+
+        button:hover {
+            background: #4b5563;
+        }
+
+        #playButton {
+            background: #22c55e;
+            color: black;
+        }
+
+        #playButton:hover {
+            background: #16a34a;
+        }
+
+        input[type="range"] {
+            cursor: pointer;
+        }
+
+        /* Drum machine */
+
+        .machine {
+            background: #1f2937;
+            padding: 20px;
+            border-radius: 15px;
+            overflow-x: auto;
+        }
+
+        .row {
+            display: grid;
+
+            /*
+             * First column = drum name
+             * Remaining 16 columns = steps
+             */
+            grid-template-columns: 100px repeat(16, 1fr);
+
+            gap: 6px;
+            margin-bottom: 8px;
+            min-width: 700px;
+        }
+
+        .drum-name {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        .step {
+            aspect-ratio: 1;
+            background: #374151;
+            border-radius: 5px;
+            padding: 0;
+            min-height: 30px;
+        }
+
+        /* Active beat */
+
+        .step.active {
+            background: #8b5cf6;
+        }
+
+        /* Currently playing beat */
+
+        .step.playing {
+            outline: 3px solid white;
+        }
+
+        /* Learning section */
+
+        .lesson {
+            margin-top: 30px;
+            background: #1f2937;
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        .lesson h2 {
+            margin-top: 0;
+        }
+
+        .lesson p {
+            color: #d1d5db;
+            line-height: 1.6;
+        }
+
+        code {
+            background: #111827;
+            padding: 3px 6px;
+            border-radius: 4px;
+            color: #c4b5fd;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- =========================
+         HTML - PAGE STRUCTURE
+         ========================= -->
+
+    <h1>🥁 My Drum Machine</h1>
+
+    <p class="description">
+        Click the squares to create your own beat.
+    </p>
+
+    <!-- Controls -->
+
+    <div class="controls">
+
+        <button id="playButton">
+            ▶ Play
+        </button>
+
+        <button id="clearButton">
+            Clear
+        </button>
+
+        <button id="randomButton">
+            Random Beat
+        </button>
+
+        <label>
+            BPM:
+            <span id="bpmValue">120</span>
+        </label>
+
+        <input
+            type="range"
+            id="bpm"
+            min="60"
+            max="180"
+            value="120"
+        >
+
+    </div>
+
+
+    <!-- Drum machine grid -->
+
+    <div class="machine" id="machine">
+
+        <!-- JavaScript will create the rows here -->
+
+    </div>
+
+
+    <!-- Learning section -->
+
+    <div class="lesson">
+
+        <h2>📚 How This Works</h2>
+
+        <p>
+            <strong>HTML</strong> creates the structure of this page.
+            For example:
+        </p>
+
+        <p>
+            <code>&lt;button&gt;Play&lt;/button&gt;</code>
+        </p>
+
+        <p>
+            <strong>CSS</strong> controls how the page looks.
+            For example:
+        </p>
+
+        <p>
+            <code>background: #8b5cf6;</code>
+        </p>
+
+        <p>
+            <strong>JavaScript</strong> makes the drum machine interactive.
+            It detects when you click a step and changes the beat.
+        </p>
+
+        <p>
+            The most important JavaScript idea here is:
+        </p>
+
+        <p>
+            <code>button.addEventListener("click", function() { ... });</code>
+        </p>
+
+        <p>
+            This means:
+            <strong>"When the user clicks this button, do something."</strong>
+        </p>
+
+    </div>
+
+</div>
+
+
+<script>
+
+    /* =========================
+       JAVASCRIPT
+       MAKES THE DRUM MACHINE WORK
+       ========================= */
+
+
+    /*
+     * These are the drums in our machine.
+     */
+
+    const drums = [
+        "Kick",
+        "Snare",
+        "Hi-Hat",
+        "Clap"
+    ];
+
+
+    /*
+     * This array stores our beat.
+     *
+     * 0 = OFF
+     * 1 = ON
+     *
+     * There are 16 steps.
+     */
+
+    let pattern = [
+
+        // Kick
+        [1, 0, 0, 0, 1, 0, 0, 0,
+         1, 0, 0, 0, 1, 0, 0, 0],
+
+        // Snare
+        [0, 0, 0, 0, 1, 0, 0, 0,
+         0, 0, 0, 0, 1, 0, 0, 0],
+
+        // Hi-Hat
+        [1, 0, 1, 0, 1, 0, 1, 0,
+         1, 0, 1, 0, 1, 0, 1, 0],
+
+        // Clap
+        [0, 0, 0, 0, 0, 0, 0, 0,
+         1, 0, 0, 0, 0, 0, 0, 0]
+
+    ];
+
+
+    /*
+     * Find HTML elements.
+     */
+
+    const machine = document.getElementById("machine");
+
+    const playButton =
+        document.getElementById("playButton");
+
+    const clearButton =
+        document.getElementById("clearButton");
+
+    const randomButton =
+        document.getElementById("randomButton");
+
+    const bpmSlider =
+        document.getElementById("bpm");
+
+    const bpmValue =
+        document.getElementById("bpmValue");
+
+
+    /*
+     * Variables used by the player.
+     */
+
+    let isPlaying = false;
+
+    let currentStep = 0;
+
+    let timer = null;
+
+    let audioContext = null;
+
+
+    /*
+     * Create the drum machine buttons.
+     */
+
+    function createMachine() {
+
+        machine.innerHTML = "";
+
+        for (let drum = 0; drum < drums.length; drum++) {
+
+            /*
+             * Create a row.
+             */
+
+            const row = document.createElement("div");
+
+            row.classList.add("row");
+
+
+            /*
+             * Add drum name.
+             */
+
+            const name = document.createElement("div");
+
+            name.classList.add("drum-name");
+
+            name.textContent = drums[drum];
+
+            row.appendChild(name);
+
+
+            /*
+             * Create 16 step buttons.
+             */
+
+            for (let step = 0; step < 16; step++) {
+
+                const button =
+                    document.createElement("button");
+
+                button.classList.add("step");
+
+                /*
+                 * If the step is ON,
+                 * give it the active class.
+                 */
+
+                if (pattern[drum][step] === 1) {
+
+                    button.classList.add("active");
+
+                }
+
+
+                /*
+                 * When the button is clicked...
+                 */
+
+                button.addEventListener("click", function() {
+
+                    /*
+                     * Change 0 to 1
+                     * or 1 to 0.
+                     */
+
+                    pattern[drum][step] =
+                        pattern[drum][step] === 0 ? 1 : 0;
+
+
+                    /*
+                     * Update the appearance.
+                     */
+
+                    button.classList.toggle("active");
+
+                });
+
+
+                row.appendChild(button);
+
+            }
+
+
+            machine.appendChild(row);
+
+        }
+
+    }
+
+
+    /*
+     * Create a sound.
+     *
+     * Web Audio API lets JavaScript
+     * create sounds directly in the browser.
+     */
+
+    function playSound(drum) {
+
+        /*
+         * Create audio system if needed.
+         */
+
+        if (!audioContext) {
+
+            audioContext =
+                new (window.AudioContext ||
+                     window.webkitAudioContext)();
+
+        }
+
+
+        /*
+         * Create oscillator.
+         */
+
+        const oscillator =
+            audioContext.createOscillator();
+
+
+        /*
+         * Create volume control.
+         */
+
+        const gain =
+            audioContext.createGain();
+
+
+        /*
+         * Connect oscillator -> volume -> speakers.
+         */
+
+        oscillator.connect(gain);
+
+        gain.connect(audioContext.destination);
+
+
+        /*
+         * Different drums get different sounds.
+         */
+
+        if (drum === 0) {
+
+            // Kick
+
+            oscillator.frequency.value = 100;
+
+            oscillator.type = "sine";
+
+        }
+
+        else if (drum === 1) {
+
+            // Snare
+
+            oscillator.frequency.value = 180;
+
+            oscillator.type = "triangle";
+
+        }
+
+        else if (drum === 2) {
+
+            // Hi-Hat
+
+            oscillator.frequency.value = 600;
+
+            oscillator.type = "square";
+
+        }
+
+        else {
+
+            // Clap
+
+            oscillator.frequency.value = 250;
+
+            oscillator.type = "sawtooth";
+
+        }
+
+
+        /*
+         * Start quietly.
+         */
+
+        gain.gain.setValueAtTime(
+            0.0001,
+            audioContext.currentTime
+        );
+
+
+        /*
+         * Quickly increase volume.
+         */
+
+        gain.gain.exponentialRampToValueAtTime(
+            0.15,
+            audioContext.currentTime + 0.01
+        );
+
+
+        /*
+         * Quickly decrease volume.
+         */
+
+        gain.gain.exponentialRampToValueAtTime(
+            0.0001,
+            audioContext.currentTime + 0.12
+        );
+
+
+        oscillator.start();
+
+        oscillator.stop(
+            audioContext.currentTime + 0.13
+        );
+
+    }
+
+
+    /*
+     * Play one step.
+     */
+
+    function playStep() {
+
+        /*
+         * Find all step buttons.
+         */
+
+        const buttons =
+            document.querySelectorAll(".step");
+
+
+        /*
+         * Remove previous playing indicator.
+         */
+
+        buttons.forEach(function(button) {
+
+            button.classList.remove("playing");
+
+        });
+
+
+        /*
+         * Each drum has 16 buttons.
+         *
+         * Calculate which button
+         * belongs to the current step.
+         */
+
+        for (let drum = 0; drum < drums.length; drum++) {
+
+            const buttonIndex =
+                drum * 16 + currentStep;
+
+
+            const button =
+                buttons[buttonIndex];
+
+
+            if (button) {
+
+                button.classList.add("playing");
+
+            }
+
+
+            /*
+             * If the step is ON,
+             * play its sound.
+             */
+
+            if (pattern[drum][currentStep] === 1) {
+
+                playSound(drum);
+
+            }
+
+        }
+
+
+        /*
+         * Move to next step.
+         */
+
+        currentStep++;
+
+        /*
+         * After step 15,
+         * go back to step 0.
+         */
+
+        if (currentStep >= 16) {
+
+            currentStep = 0;
+
+        }
+
+    }
+
+
+    /*
+     * Start the drum machine.
+     */
+
+    function startPlaying() {
+
+        if (isPlaying) {
+
+            return;
+
+        }
+
+
+        isPlaying = true;
+
+        playButton.textContent = "■ Stop";
+
+
+        /*
+         * Calculate the time between steps.
+         *
+         * BPM = beats per minute.
+         *
+         * We use four steps per beat.
+         */
+
+        const interval =
+            60000 / Number(bpmSlider.value) / 4;
+
+
+        playStep();
+
+
+        timer =
+            setInterval(playStep, interval);
+
+    }
+
+
+    /*
+     * Stop the drum machine.
+     */
+
+    function stopPlaying() {
+
+        isPlaying = false;
+
+        playButton.textContent = "▶ Play";
+
+
+        clearInterval(timer);
+
+        timer = null;
+
+
+        /*
+         * Remove playing indicators.
+         */
+
+        document
+            .querySelectorAll(".step")
+            .forEach(function(button) {
+
+                button.classList.remove("playing");
+
+            });
+
+    }
+
+
+    /*
+     * Play / Stop button.
+     */
+
+    playButton.addEventListener("click", function() {
+
+        if (isPlaying) {
+
+            stopPlaying();
+
+        }
+
+        else {
+
+            startPlaying();
+
+        }
+
+    });
+
+
+    /*
+     * Clear button.
+     */
+
+    clearButton.addEventListener("click", function() {
+
+        /*
+         * Turn every step OFF.
+         */
+
+        for (let drum = 0; drum < pattern.length; drum++) {
+
+            for (let step = 0; step < 16; step++) {
+
+                pattern[drum][step] = 0;
+
+            }
+
+        }
+
+
+        /*
+         * Rebuild the machine.
+         */
+
+        createMachine();
+
+    });
+
+
+    /*
+     * Random beat button.
+     */
+
+    randomButton.addEventListener("click", function() {
+
+        for (let drum = 0; drum < pattern.length; drum++) {
+
+            for (let step = 0; step < 16; step++) {
+
+                /*
+                 * Randomly turn steps ON/OFF.
+                 */
+
+                pattern[drum][step] =
+                    Math.random() > 0.65 ? 1 : 0;
+
+            }
+
+        }
+
+
+        createMachine();
+
+    });
+
+
+    /*
+     * BPM slider.
+     */
+
+    bpmSlider.addEventListener("input", function() {
+
+        bpmValue.textContent =
+            bpmSlider.value;
+
+
+        /*
+         * If currently playing,
+         * restart with the new speed.
+         */
+
+        if (isPlaying) {
+
+            stopPlaying();
+
+            startPlaying();
+
+        }
+
+    });
+
+
+    /*
+     * Create the drum machine
+     * when the page loads.
+     */
+
+    createMachine();
+
+</script>
+
+</body>
+</html>

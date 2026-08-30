@@ -19,7 +19,7 @@
     }
     header {
       height: 100vh;
-      background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.75)),
+      background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.7)),
                   url('https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Pohela_Boishakh_-_1432_Rally_-_1.jpg/1280px-Pohela_Boishakh_-_1432_Rally_-_1.jpg') center/cover no-repeat;
       display: flex;
       flex-direction: column;
@@ -33,7 +33,7 @@
       font-family: 'Playfair Display', serif;
       font-size: clamp(2.6rem, 7vw, 5rem);
       color: #fff;
-      text-shadow: 0 4px 20px rgba(0,0,0,0.8);
+      text-shadow: 0 4px 25px rgba(0,0,0,0.9);
       animation: fadeUp 1.2s ease;
     }
     header .tagline {
@@ -46,7 +46,7 @@
     header .sub {
       margin-top: 1rem;
       font-size: 1.05rem;
-      color: #ddd;
+      color: #eee;
       max-width: 620px;
       animation: fadeUp 1.8s ease;
     }
@@ -54,7 +54,7 @@
       position: absolute;
       bottom: 40px;
       font-size: 0.9rem;
-      opacity: 0.75;
+      opacity: 0.8;
       animation: bounce 2s infinite;
     }
     @keyframes fadeUp {
@@ -178,8 +178,9 @@
 <body>
   <header>
     <h1>Next Stop Chittagong</h1>
-    <p class="tagline">Homemade Bangladeshi Street Food • Freshly Made in the USA</p>
-    <p class="sub">Authentic recipes cooked from scratch with love — bringing the bold, tangy, soul-warming flavors of Bangladesh right to your neighborhood stall.</p>
+    <p class="tagline">Homemade Bangladeshi Street Food • Freshly Made</p>
+    <p class="sub">Authentic recipes cooked from scratch with love — Craving authentic local taste? Stop by, because your mom said it's okay to eat only at our stall today!
+So ditch the boring snacks, grab a plate, and treat your tastebuds to a full-blown flavor festival before your stomach starts making weird noises in public!</p>
     <div class="scroll-hint">↓ Come taste the difference ↓</div>
   </header>
 
@@ -192,7 +193,7 @@
         <img class="card-img" src="https://images.pexels.com/photos/17184404/pexels-photo-17184404.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Jhal Fuchka">
         <div class="card-body">
           <h3>Jhal Fuchka</h3>
-          <p>Crispy hollow shells filled with our house-spiced potato & chickpea mix, finished with fiery homemade tamarind-mint water. One bite and you’ll understand why this is the stall favorite.</p>
+          <p>Crispy hollow shells filled with our house spiced potato & chickpea mix, susubumber, morich, finished with fiery homemade tamarind water. - One bite and you’ll understand why this is the stall favorite.</p>
         </div>
       </div>
 
@@ -203,25 +204,61 @@
         <div class="splash"></div>
         <div class="card-body">
           <h3>Doi Fuchka</h3>
-          <p>Cool, creamy yogurt poured over crispy puris like a sweet-tangy fountain, loaded with spicy potato filling, sev and chaat masala. The ultimate balance of heat and cooling comfort — made fresh every day.</p>
+          <p>Cool, creamy yogurt and sev poured over crispy puris like a sweet-tangy fountain, loaded with spicy potato filling, and chaat masala. The ultimate balance of heat and cooling comfort — Warning: Contains 0 calories if nobody sees you eat them!.</p>
         </div>
       </div>
 
+      <!-- Jhol Momo with Broth -->
+      <div class="card">
+        <img class="card-img" src="https://i.pinimg.com/originals/4f/c7/66/4fc7665dfa4e883d9c6af0b14125c390.jpg" alt="Jhol Momo with Broth">
+        <div class="card-body">
+          <h3>Jhol Momo with Broth</h3>
+          <p> Juicy steamed momos swimming in our smoky, spicy and rich broth. Sip the tangy, spicy jhol between every momo. — pure homemade comfort in a bowl. - So rich, even your bank account will feel jealous.</p>
+        </div>
+      </div>
+      
+      <!-- Steam Momos -->
+      <div class="card">
+        <img class="card-img" src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=800" alt="Steam Momos">
+        <div class="card-body">
+          <h3>Steam Momos</h3>
+          <p>Delicate hand-pleated dumplings filled with juicy chicken, steamed until the wrappers turn translucent. Served with soy sauce.</p>
+        </div>
+      </div>
+      
+      <!-- Khichuri with Mejbani Gorur Mangsho -->
+      <div class="card">
+        <img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Khichuri_of_Bangladesh.jpg/1280px-Khichuri_of_Bangladesh.jpg" alt="Khichuri with Mejbani Gorur Mangsho">
+        <div class="card-body">
+          <h3>Khichuri with SPECIAL Mejbani Gorur Mangsho</h3>
+          <p>Bhuna khichuri paired with Chittagong’s famous slow cooked SPECIAL Mejbani-style beef. Tender, deeply spiced meat that melts into the rice — One bite and you’ll instantly consider moving to Chittagong.</p>
+        </div>
+      </div>
+      
+      <!-- Chapli Kabaab with Puri -->
+      <div class="card">
+        <img class="card-img" src="https://sa-halalexpress.com/cdn/shop/files/chapli-kabab.png" alt="Chapli Kabaab with Puri">
+        <div class="card-body">
+          <h3>Chapli Kabaab with Puri</h3>
+          <p>Sizzling, herb-packed meat patties served alongside piping hot, puffed golden puris. Forget sharing! you're going to want to fight your friends for the last piece(chef special).</p>
+        </div>
+      </div>
+      
       <!-- Shingara -->
       <div class="card">
         <img class="card-img" src="https://pikturenama.com/wp-content/uploads/2025/02/phulkopir-Shingara-4.jpg" alt="Shingara">
         <div class="card-body">
           <h3>Shingara</h3>
-          <p>Golden, flaky, homemade pyramids stuffed with spiced potato, cauliflower and peas. Served hot with our sharp tomato-chili chutney. Perfect with a cup of chai.</p>
+          <p>Golden, flaky, stuffed with spiced potato, masala and love. Served hot with tomato sauce. Perfect with a cup of cha.</p>
         </div>
       </div>
 
-      <!-- Shingara Chaat – from the link you provided -->
+      <!-- Shingara Chaat -->
       <div class="card">
         <img class="card-img" src="https://www.ruchiskitchen.com/wp-content/uploads/2023/10/Samosa-Chaat-recipe-001.jpg.webp" alt="Shingara Chaat">
         <div class="card-body">
           <h3>Shingara Chaat</h3>
-          <p>Crushed shingara tossed with yogurt, tamarind, green chutney, onions, coriander and plenty of sev. Crunchy, creamy, tangy and spicy all at once — pure homemade street magic.</p>
+          <p>Crushed shingara tossed with special doi, warm chickpea ghugni, sweet-spicy chutneys, tamarind, onions, coriander and plenty of sev. Crunchy, creamy, tangy and spicy all at once — pure homemade street magic.</p>
         </div>
       </div>
 
@@ -230,7 +267,7 @@
         <img class="card-img" src="https://www.zorabian.com/wp-content/uploads/2023/01/Crisp-Chicken-Samosas-ready-at-your-fingertips-1024x665.jpg" alt="Chicken Samosa">
         <div class="card-body">
           <h3>Chicken Samosa</h3>
-          <p>Juicy homemade chicken filling seasoned with garam masala and green chili, wrapped in a shatteringly crisp pastry. Freshly fried and dangerously addictive.</p>
+          <p>Juicy homemade chicken filling seasoned with garam masala and green chili, wrapped in a shatteringly crisp pastry. - Freshly fried and dangerously addictive.</p>
         </div>
       </div>
 
@@ -243,41 +280,6 @@
         </div>
       </div>
 
-      <!-- Khichuri with Mejbani Gorur Mangsho -->
-      <div class="card">
-        <img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Khichuri_of_Bangladesh.jpg/1280px-Khichuri_of_Bangladesh.jpg" alt="Khichuri with Mejbani Gorur Mangsho">
-        <div class="card-body">
-          <h3>Khichuri with Mejbani Gorur Mangsho</h3>
-          <p>Soft, ghee-laced homemade khichuri paired with our special slow-cooked Mejbani-style beef. Tender, deeply spiced meat that melts into the rice — the heart of Bangladeshi hospitality, made right here in the USA.</p>
-        </div>
-      </div>
-
-      <!-- Chapli Kabaab with Puri -->
-      <div class="card">
-        <img class="card-img" src="https://sa-halalexpress.com/cdn/shop/files/chapli-kabab.png" alt="Chapli Kabaab with Puri">
-        <div class="card-body">
-          <h3>Chapli Kabaab with Puri</h3>
-          <p>Flat, crispy-edged, juicy homemade chapli patties loaded with coriander, tomato and green chili. Served sizzling with soft puris. Smoky, spicy and unforgettable.</p>
-        </div>
-      </div>
-
-      <!-- Steam Momos -->
-      <div class="card">
-        <img class="card-img" src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=800" alt="Steam Momos">
-        <div class="card-body">
-          <h3>Steam Momos</h3>
-          <p>Delicate hand-pleated dumplings filled with juicy chicken or veggies, steamed until the wrappers turn translucent. Served with our fiery homemade tomato-chili achar.</p>
-        </div>
-      </div>
-
-      <!-- Jhol Momo with Broth -->
-      <div class="card">
-        <img class="card-img" src="https://i.pinimg.com/originals/4f/c7/66/4fc7665dfa4e883d9c6af0b14125c390.jpg" alt="Jhol Momo with Broth">
-        <div class="card-body">
-          <h3>Jhol Momo with Broth</h3>
-          <p>Steamed momos swimming in our smoky, spicy sesame-tomato broth. Sip the tangy, nutty jhol between every dumpling — pure homemade comfort in a bowl.</p>
-        </div>
-      </div>
 
     </div>
   </div>

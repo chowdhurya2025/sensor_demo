@@ -1,319 +1,583 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Next Stop Chittagong – Homemade USA Stall</title>
+
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
   <style>
+
     :root {
+
       --primary: #c0392b;
+
       --accent: #f39c12;
+
     }
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
+
       font-family: 'Poppins', sans-serif;
+
       background: linear-gradient(135deg, #1a1a1a 0%, #2c3e50 100%);
+
       color: #eee;
+
       line-height: 1.6;
+
     }
+
     header {
+
       height: 100vh;
+
       background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.7)),
-                  url('https://exclusive-bangladeshi-nakshikatha.blogspot.com/.jpg') center/cover no-repeat;
+
+                  url('https://i.pinimg.com/originals/78/a8/8b/78a88bce54c5abb9a5fe0064c09d8c6c.jpg') center/cover no-repeat;
+
       display: flex;
+
       flex-direction: column;
+
       justify-content: center;
+
       align-items: center;
+
       text-align: center;
+
       padding: 0 20px;
+
       position: relative;
+
     }
+
     header h1 {
+
       font-family: 'Playfair Display', serif;
+
       font-size: clamp(2.6rem, 7vw, 5rem);
+
       color: #fff;
+
       text-shadow: 0 4px 25px rgba(0,0,0,0.9);
+
       animation: fadeUp 1.2s ease;
+
     }
+
     header .tagline {
+
       font-size: clamp(1.15rem, 3vw, 1.7rem);
+
       max-width: 780px;
+
       margin-top: 1.2rem;
+
       color: var(--accent);
+
       animation: fadeUp 1.5s ease;
+
     }
+
     header .sub {
+
       margin-top: 1rem;
+
       font-size: 1.05rem;
+
       color: #eee;
+
       max-width: 620px;
+
       animation: fadeUp 1.8s ease;
+
     }
+
     .scroll-hint {
+
       position: absolute;
+
       bottom: 40px;
+
       font-size: 0.9rem;
+
       opacity: 0.8;
+
       animation: bounce 2s infinite;
+
     }
+
     @keyframes fadeUp {
+
       from { opacity: 0; transform: translateY(40px); }
+
       to { opacity: 1; transform: translateY(0); }
+
     }
+
     @keyframes bounce {
+
       0%, 100% { transform: translateY(0); }
+
       50% { transform: translateY(-12px); }
+
     }
+
     .container {
+
       max-width: 1300px;
+
       margin: 0 auto;
+
       padding: 80px 20px;
+
     }
+
     .section-title {
+
       text-align: center;
+
       font-family: 'Playfair Display', serif;
+
       font-size: 2.6rem;
+
       margin-bottom: 50px;
+
       color: var(--accent);
+
     }
+
     .section-title::after {
+
       content: '';
+
       display: block;
+
       width: 80px;
+
       height: 4px;
+
       background: var(--primary);
+
       margin: 14px auto 0;
+
       border-radius: 2px;
+
     }
+
     .food-grid {
+
       display: grid;
+
       grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+
       gap: 40px;
+
     }
+
     .card {
+
       background: rgba(255,255,255,0.05);
+
       border-radius: 20px;
+
       overflow: hidden;
+
       box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+
       transition: transform 0.4s ease, box-shadow 0.4s ease;
+
       border: 1px solid rgba(255,255,255,0.08);
+
     }
+
     .card:hover {
+
       transform: translateY(-12px);
+
       box-shadow: 0 25px 50px rgba(192,57,43,0.3);
+
     }
+
     .card-img {
+
       width: 100%;
+
       height: 260px;
+
       object-fit: cover;
+
       display: block;
+
       transition: transform 0.6s ease;
+
     }
+
     .card:hover .card-img { transform: scale(1.08); }
+
     .card-body { padding: 28px; }
+
     .card-body h3 {
+
       font-family: 'Playfair Display', serif;
+
       font-size: 1.65rem;
+
       color: var(--accent);
+
       margin-bottom: 12px;
+
     }
+
     .card-body p {
+
       font-size: 0.97rem;
+
       color: #ddd;
+
     }
+
     .fountain-card { position: relative; }
+
     .fountain {
+
       position: absolute;
+
       top: 175px;
+
       left: 50%;
+
       transform: translateX(-50%);
+
       width: 8px;
+
       height: 0;
+
       background: linear-gradient(to bottom, #f1c40f, #e67e22);
+
       border-radius: 4px;
+
       opacity: 0;
+
       animation: pour 3s ease-in-out infinite;
+
       z-index: 2;
+
       pointer-events: none;
+
     }
+
     @keyframes pour {
+
       0% { height: 0; opacity: 0; }
+
       30% { height: 65px; opacity: 0.85; }
+
       70% { height: 65px; opacity: 0.85; }
+
       100% { height: 0; opacity: 0; }
+
     }
+
     .splash {
+
       position: absolute;
+
       top: 240px;
+
       left: 50%;
+
       width: 40px;
+
       height: 8px;
+
       background: radial-gradient(circle, #f1c40f 20%, transparent 70%);
+
       border-radius: 50%;
+
       transform: translateX(-50%) scale(0);
+
       animation: splash 3s ease-in-out infinite;
+
       z-index: 2;
+
       pointer-events: none;
+
     }
+
     @keyframes splash {
+
       0%, 40% { transform: translateX(-50%) scale(0); opacity: 0; }
+
       55% { transform: translateX(-50%) scale(1.5); opacity: 0.7; }
+
       100% { transform: translateX(-50%) scale(0); opacity: 0; }
+
     }
+
     footer {
+
       text-align: center;
+
       padding: 50px 20px;
+
       background: #111;
+
       color: #888;
+
       font-size: 0.95rem;
+
     }
+
     footer span { color: var(--accent); }
+
     @media (max-width: 600px) {
+
       .food-grid { grid-template-columns: 1fr; }
+
       .card-img { height: 220px; }
+
     }
+
   </style>
+
 </head>
+
 <body>
+
   <header>
+
     <h1>Next Stop Chittagong</h1>
-    <p class="tagline">Homemade Bangladeshi Street Food • Freshly Made</p>
-    <p class="sub">Authentic recipes cooked from scratch with love — Craving authentic local taste? Stop by, because your mom said it's okay to eat only at our stall today!
-So ditch the boring snacks, grab a plate, and treat your tastebuds to a full-blown flavor festival before your stomach starts making weird noises in public!</p>
+
+    <p class="tagline">Homemade Bangladeshi Street Food • Freshly Made with Love</p>
+
+    <p class="sub">Authentic recipes cooked from scratch with love.                                  Craving authentic local taste? Stop by, because your mom said it's okay to eat only at our stall today! So ditch the boring snacks, grab a plate, and treat your tastebuds to a full blown flavor festival before your stomach starts making weird noises in public! soul-warming flavors of Bangladesh right to your neighborhood stall.</p>
+
     <div class="scroll-hint">↓ Come taste the difference ↓</div>
+
   </header>
 
   <div class="container">
+
     <h2 class="section-title">Our Homemade Specials</h2>
+
     <div class="food-grid">
 
       <!-- Jhal Fuchka -->
+
       <div class="card">
+
         <img class="card-img" src="https://images.pexels.com/photos/17184404/pexels-photo-17184404.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Jhal Fuchka">
+
         <div class="card-body">
+
           <h3>Jhal Fuchka</h3>
-          <p>Crispy hollow shells filled with our house spiced potato & chickpea mix, susubumber, morich, finished with fiery homemade tamarind water. 
-            One bite and you’ll understand why this is the stall favorite.</p>
+
+          <p>Crispy hollow shells filled with our house spiced potato & chickpea mix, susubumber, morich, finished with fiery homemade tamarind water. One bite and you’ll understand why this is the stall favorite.</p>
+
         </div>
+
       </div>
 
       <!-- Doi Fuchka -->
+
       <div class="card fountain-card">
+
         <img class="card-img" src="https://www.lifeberrys.com/img/article/dahi-puri-chatt-1654691794-lb.jpg" alt="Doi Fuchka">
+
         <div class="fountain"></div>
+
         <div class="splash"></div>
+
         <div class="card-body">
+
           <h3>Doi Fuchka</h3>
-          <p>creamy yogurt and sev poured over crispy puris, loaded with spicy potato filling, and chaat masala. 
-            The ultimate balance of heat and cooling comfort 
-            Warning: Contains 0 calories if nobody sees you eat them!.</p>
+
+          <p>creamy yogurt and sev poured over crispy puris, loaded with spicy potato filling, and chaat masala. The ultimate balance of heat and cooling comfort Warning: Contains 0 calories if nobody sees you eat them!</p>
+
         </div>
+
+      </div>
+
+      <!-- Steam Momos -->
+
+      <div class="card">
+
+        <img class="card-img" src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=800" alt="Steam Momos">
+
+        <div class="card-body">
+
+          <h3>Steam Momos</h3>
+
+          <p>Yummy hand pleated dumplings filled with juicy chicken, steamed until the wrappers turn translucent. Served with soy sauce.</p>
+
+        </div>
+
       </div>
 
       <!-- Jhol Momo with Broth -->
+
       <div class="card">
+
         <img class="card-img" src="https://i.pinimg.com/originals/4f/c7/66/4fc7665dfa4e883d9c6af0b14125c390.jpg" alt="Jhol Momo with Broth">
+
         <div class="card-body">
+
           <h3>Jhol Momo with Broth</h3>
-          <p> Juicy steamed momos swimming in our smoky, spicy and rich broth. Sip the tangy, spicy jhol between every momo. 
-             pure homemade comfort in a bowl.  So rich, even your bank account will feel jealous.</p>
+
+          <p>Juicy steamed momos swimming in our smoky, spicy and rich broth. Sip the tangy, spicy jhol between every momo. pure homemade comfort in a bowl. So rich, even your bank account will feel jealous.</p>
+
         </div>
-      </div>
-      
-      <!-- Steam Momos -->
+
+      </div>                                                                                                                                                  <!-- Khichuri with Mejbani Gorur Mangsho – fixed image -->
+
       <div class="card">
-        <img class="card-img" src="https://img.magnific.com/premium-photo/veg-steam-momo-nepalese-traditional-dish-momo-stuffed-with-vegetables-then-cooked-served-with-sauce-rustic-wooden-background-selective-focus_726363-1150.jpg?w=2000" alt="Steam Momos">
+
+        <img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Khichuri_of_Bangladesh.jpg/1280px-Khichuri_of_Bangladesh.jpg" alt="Khichuri with Mejbani Gorur Mangsho">
+
         <div class="card-body">
-          <h3>Steam Momos</h3>
-          <p>Delicate hand-pleated dumplings filled with juicy chicken, steamed until the wrappers turn translucent. Served with soy sauce.</p>
-        </div>
-      </div>
-      
-      <!-- Khichuri with Mejbani Gorur Mangsho -->
-      <div class="card">
-        <img class="card-img" src="https://www.freepik.com/photos/khichuri.jpg" alt="Khichuri with Mejbani Gorur Mangsho">
-        <div class="card-body">
+
           <h3>Khichuri with SPECIAL Mejbani Gorur Mangsho</h3>
-          <p>Bhuna khichuri paired with Chittagong’s famous slow cooked SPECIAL Mejbani-style beef. Tender, deeply spiced meat that melts into the rice. 
-            One bite and you’ll instantly consider moving to Chittagong! </p>
+
+          <p> Bhuna khichuri paired with Chittagong’s famous slow cooked SPECIAL Mejbani-style beef. Tender, deeply spiced meat that melts into the rice. One bite and you’ll instantly consider moving to Chittagong!</p>
+
         </div>
+
       </div>
-      
+
       <!-- Chapli Kabaab with Puri -->
+
       <div class="card">
+
         <img class="card-img" src="https://sa-halalexpress.com/cdn/shop/files/chapli-kabab.png" alt="Chapli Kabaab with Puri">
+
         <div class="card-body">
+
           <h3>Chapli Kabaab with Puri</h3>
-          <p>Sizzling, herb-packed meat patties served alongside piping hot, puffed golden puris. 
-            Forget sharing! you're going to want to fight your friends for the last piece(chef special).</p>
+
+          <p>Sizzling, herb-packed meat patties served alongside piping hot, puffed golden puris. Forget sharing! you're going to want to fight your friends for the last piece(chef special).</p>
+
         </div>
-      </div>
-      
-      <!-- Shingara -->
+
+      </div>                                                                                                                                                  <!-- Shingara -->
+
       <div class="card">
+
         <img class="card-img" src="https://pikturenama.com/wp-content/uploads/2025/02/phulkopir-Shingara-4.jpg" alt="Shingara">
+
         <div class="card-body">
+
           <h3>Shingara</h3>
+
           <p>Golden, flaky, stuffed with spiced potato, masala and love. Served hot with tomato sauce. Perfect with a cup of cha.</p>
+
         </div>
+
       </div>
 
       <!-- Shingara Chaat -->
+
       <div class="card">
+
         <img class="card-img" src="https://www.ruchiskitchen.com/wp-content/uploads/2023/10/Samosa-Chaat-recipe-001.jpg.webp" alt="Shingara Chaat">
+
         <div class="card-body">
+
           <h3>Shingara Chaat</h3>
-          <p>Crushed shingara tossed with special doi, warm chickpea ghugni, sweet-spicy chutneys, tamarind, onions, coriander and plenty of sev. Crunchy, creamy, tangy and spicy all at once 
-            pure homemade street magic.</p>
+
+          <p>Crushed shingara tossed with special doi, warm chickpea ghugni, sweet-spicy chutneys, tamarind, onions, coriander and plenty of sev. Crunchy, creamy, tangy and spicy all at once pure homemade street magic.</p>
+
         </div>
+
       </div>
 
       <!-- Chicken Samosa -->
+
       <div class="card">
+
         <img class="card-img" src="https://www.zorabian.com/wp-content/uploads/2023/01/Crisp-Chicken-Samosas-ready-at-your-fingertips-1024x665.jpg" alt="Chicken Samosa">
+
         <div class="card-body">
+
           <h3>Chicken Samosa</h3>
-          <p>Juicy homemade chicken filling seasoned with garam masala and green chili, wrapped in a shatteringly crisp pastry. 
-            Freshly fried and dangerously addictive.</p>
+
+          <p>Juicy homemade chicken filling seasoned with garam masala and green chili, wrapped in a shatteringly crisp pastry. Freshly fried and dangerously addictive.</p>
+
         </div>
+
       </div>
 
       <!-- Daal Puri -->
+
       <div class="card">
+
         <img class="card-img" src="https://i.ytimg.com/vi/_ET23Usekss/maxresdefault.jpg" alt="Daal Puri">
+
         <div class="card-body">
+
           <h3>Daal Puri</h3>
-          <p>Soft, puffed puris stuffed with our spiced red lentil filling and deep-fried until golden. 
-            Tear one open and the fragrant homemade aroma hits you instantly. A true comfort classic.</p>
+
+          <p>Soft, puffed puris stuffed with our spiced red lentil filling and deep fried until golden. Tear one open and the fragrant homemade aroma hits you instantly. A true comfort classic.</p>
+
         </div>
+
       </div>
 
-
     </div>
+
   </div>
 
   <footer>
+
     <p><span>Next Stop Chittagong</span> — Homemade with love in the USA</p>
+
     <p style="margin-top:8px;font-size:0.9rem;">Fresh. Authentic. Made from scratch every day.</p>
+
   </footer>
 
   <script>
+
     const cards = document.querySelectorAll('.card');
+
     const observer = new IntersectionObserver((entries) => {
+
       entries.forEach(entry => {
+
         if (entry.isIntersecting) {
+
           entry.target.style.opacity = '1';
+
           entry.target.style.transform = 'translateY(0)';
+
         }
+
       });
+
     }, { threshold: 0.15 });
+
     cards.forEach(card => {
+
       card.style.opacity = '0';
+
       card.style.transform = 'translateY(40px)';
+
       card.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+
       observer.observe(card);
+
     });
+
   </script>
+
 </body>
+
 </html>

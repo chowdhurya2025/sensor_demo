@@ -3,471 +3,313 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Next Stop Chittagong - Authentic Bangladeshi Street Food</title>
+  <title>Next Stop Chittagong</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-color: #0d130e;
-      --card-bg: #162218;
-      --accent-color: #ff5722;
-      --accent-hover: #e64a19;
-      --header-green: #10381e;
-      --header-accent: #2e7d32;
-      --text-color: #f1f1f1;
-      --text-muted: #a3b8a8;
-      --tok-fountain-color: #8bc34a;
+      --primary: #c0392b;
+      --accent: #f39c12;
+      --dark: #1a1a1a;
+      --cream: #fdf6e3;
+      --green: #27ae60;
     }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      background-color: var(--bg-color);
-      color: var(--text-color);
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #1a1a1a 0%, #2c3e50 100%);
+      color: #eee;
       line-height: 1.6;
-      padding-bottom: 50px;
+      overflow-x: hidden;
     }
-
     header {
-      background: linear-gradient(rgba(10, 35, 18, 0.85), rgba(5, 20, 10, 0.9)), 
-                  url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
-      text-align: center;
-      padding: 60px 20px;
-      border-bottom: 4px solid var(--header-accent);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.6);
-    }
-
-    header h1 {
-      font-size: 3rem;
-      color: #76ff03;
-      margin-bottom: 10px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
-    }
-
-    header p {
-      font-size: 1.2rem;
-      color: #c8e6c9;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    .filter-container {
+      height: 100vh;
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)),
+                  url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1600') center/cover no-repeat;
       display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin: 30px 0;
-      flex-wrap: wrap;
-    }
-
-    .filter-btn {
-      background: var(--card-bg);
-      color: var(--text-color);
-      border: 1px solid var(--header-accent);
-      padding: 10px 22px;
-      border-radius: 25px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: all 0.3s ease;
-    }
-
-    .filter-btn:hover, .filter-btn.active {
-      background: var(--header-accent);
-      color: #fff;
-      box-shadow: 0 0 10px rgba(46, 125, 50, 0.5);
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    .food-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 25px;
-    }
-
-    .food-card {
-      background: var(--card-bg);
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid #1e3a24;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      position: relative;
-    }
-
-    .food-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 25px rgba(118, 255, 3, 0.2);
-    }
-
-    .media-container {
-      position: relative;
-      width: 100%;
-      height: 220px;
-      overflow: hidden;
-      background: #000;
-    }
-
-    .media-container img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .fountain-canvas {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 2;
-    }
-
-    .card-content {
-      padding: 20px;
-    }
-
-    .card-title {
-      font-size: 1.35rem;
-      color: #76ff03;
-      margin-bottom: 8px;
-    }
-
-    .card-desc {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      margin-bottom: 15px;
-    }
-
-    .card-tag {
-      display: inline-block;
-      background: rgba(46, 125, 50, 0.3);
-      color: #a5d6a7;
-      padding: 4px 10px;
-      border-radius: 5px;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      font-weight: 600;
-    }
-
-    .btn-view {
-      margin-top: 15px;
-      width: 100%;
-      padding: 10px;
-      background: var(--header-accent);
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: background 0.2s;
-    }
-
-    .btn-view:hover {
-      background: #388e3c;
-    }
-
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.88);
-      z-index: 100;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 20px;
-    }
-
-    .modal-content {
-      background: var(--card-bg);
-      max-width: 600px;
-      width: 100%;
-      border-radius: 12px;
-      overflow: hidden;
+      text-align: center;
       position: relative;
-      border: 1px solid var(--header-accent);
     }
-
-    .modal-media {
-      width: 100%;
-      max-height: 350px;
-      object-fit: cover;
-    }
-
-    .modal-body {
-      padding: 20px;
-    }
-
-    .close-btn {
-      position: absolute;
-      top: 10px;
-      right: 15px;
-      font-size: 2rem;
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 8vw, 5.5rem);
       color: #fff;
-      cursor: pointer;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.8);
+      letter-spacing: 2px;
+      animation: fadeUp 1.2s ease;
     }
-
+    header p {
+      font-size: clamp(1.1rem, 3vw, 1.6rem);
+      max-width: 700px;
+      margin-top: 1rem;
+      color: var(--accent);
+      animation: fadeUp 1.5s ease;
+    }
+    .scroll-hint {
+      position: absolute;
+      bottom: 40px;
+      font-size: 0.9rem;
+      opacity: 0.7;
+      animation: bounce 2s infinite;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 80px 20px;
+    }
+    .section-title {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      margin-bottom: 60px;
+      color: var(--accent);
+      position: relative;
+    }
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: var(--primary);
+      margin: 15px auto 0;
+      border-radius: 2px;
+    }
+    .food-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 40px;
+    }
+    .card {
+      background: rgba(255,255,255,0.05);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 25px 50px rgba(192,57,43,0.3);
+    }
+    .card-img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+    .card:hover .card-img { transform: scale(1.08); }
+    .card-body { padding: 28px; }
+    .card-body h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .card-body p {
+      font-size: 0.98rem;
+      color: #ddd;
+      margin-bottom: 8px;
+    }
+    /* Special fountain effect for Doi Fuchka */
+    .fountain-card { position: relative; }
+    .fountain {
+      position: absolute;
+      top: 180px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 8px;
+      height: 0;
+      background: linear-gradient(to bottom, #f1c40f, #e67e22);
+      border-radius: 4px;
+      opacity: 0;
+      animation: pour 3s ease-in-out infinite;
+      z-index: 2;
+      pointer-events: none;
+    }
+    @keyframes pour {
+      0% { height: 0; opacity: 0; }
+      30% { height: 70px; opacity: 0.85; }
+      70% { height: 70px; opacity: 0.85; }
+      100% { height: 0; opacity: 0; }
+    }
+    .splash {
+      position: absolute;
+      top: 250px;
+      left: 50%;
+      width: 40px;
+      height: 8px;
+      background: radial-gradient(circle, #f1c40f 20%, transparent 70%);
+      border-radius: 50%;
+      transform: translateX(-50%) scale(0);
+      animation: splash 3s ease-in-out infinite;
+      z-index: 2;
+      pointer-events: none;
+    }
+    @keyframes splash {
+      0%, 40% { transform: translateX(-50%) scale(0); opacity: 0; }
+      55% { transform: translateX(-50%) scale(1.5); opacity: 0.7; }
+      100% { transform: translateX(-50%) scale(0); opacity: 0; }
+    }
+    footer {
+      text-align: center;
+      padding: 50px 20px;
+      background: #111;
+      color: #888;
+      font-size: 0.95rem;
+    }
+    footer span { color: var(--accent); }
     @media (max-width: 600px) {
-      header h1 {
-        font-size: 2.2rem;
-      }
+      .food-grid { grid-template-columns: 1fr; }
+      .card-img { height: 220px; }
     }
   </style>
 </head>
 <body>
-
   <header>
     <h1>Next Stop Chittagong</h1>
-    <p>Dive into the legendary flavors of Bangladeshi street food & rich culinary heritage</p>
+    <p>A fiery, tangy, soul-satisfying journey through the streets & kitchens of Bangladesh’s port city</p>
+    <div class="scroll-hint">↓ Scroll to taste the city ↓</div>
   </header>
 
   <div class="container">
-    <div class="filter-container">
-      <button class="filter-btn active" onclick="filterFood('all')">All Items</button>
-      <button class="filter-btn" onclick="filterFood('snacks')">Snacks & Street Food</button>
-      <button class="filter-btn" onclick="filterFood('heavy')">Main Meals</button>
-    </div>
+    <h2 class="section-title">Street Legends & Port City Feasts</h2>
+    <div class="food-grid">
 
-    <div class="food-grid" id="foodGrid"></div>
-  </div>
-
-  <div class="modal" id="foodModal">
-    <div class="modal-content">
-      <span class="close-btn" onclick="closeModal()">&times;</span>
-      <div id="modalMediaContainer"></div>
-      <div class="modal-body">
-        <h2 id="modalTitle" class="card-title"></h2>
-        <p id="modalDesc" class="card-desc"></p>
+      <!-- 1. Fuchka -->
+      <div class="card">
+        <img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Puchka_or_Panipuri.jpg/800px-Puchka_or_Panipuri.jpg" alt="Fuchka" onerror="this.src='https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800'">
+        <div class="card-body">
+          <h3>Fuchka</h3>
+          <p>Crispy hollow spheres of pure joy, filled with spiced mashed potato, chickpeas and a splash of fiery tamarind water that explodes on your tongue. One bite and the streets of Chittagong roar to life. This is the original street-side adrenaline shot — tangy, spicy, crunchy, addictive.</p>
+        </div>
       </div>
+
+      <!-- 2. Doi Fuchka -->
+      <div class="card fountain-card">
+        <img class="card-img" src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800" alt="Doi Fuchka">
+        <div class="fountain"></div>
+        <div class="splash"></div>
+        <div class="card-body">
+          <h3>Doi Fuchka</h3>
+          <p>The royal cousin of classic fuchka. Cool, creamy yogurt cascades over the crispy shells like a golden fountain of tok (sweet-tangy sauce), meeting spicy potato filling and a final shower of chaat masala. Every bite is a cooling explosion after the heat — pure Bangladeshi street poetry in edible form.</p>
+        </div>
+      </div>
+
+      <!-- 3. Shingara -->
+      <div class="card">
+        <img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Bengali_Singara.jpg/800px-Bengali_Singara.jpg" alt="Shingara" onerror="this.src='https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800'">
+        <div class="card-body">
+          <h3>Shingara</h3>
+          <p>Golden, flaky, pyramid-shaped perfection. Thin, buttery pastry hugging a fragrant filling of spiced potato, cauliflower and peas. Served piping hot with a sharp tomato-chili chutney. The ultimate tea-time companion that makes rainy Chittagong afternoons unforgettable.</p>
+        </div>
+      </div>
+
+      <!-- 4. Shingara Chaat -->
+      <div class="card">
+        <img class="card-img" src="https://images.unsplash.com/photo-1606491956689-2ea866880017?w=800" alt="Shingara Chaat">
+        <div class="card-body">
+          <h3>Shingara Chaat</h3>
+          <p>Crushed shingara meets cool yogurt, tangy tamarind, fiery green chutney, onions, coriander and a blizzard of sev. A deconstructed masterpiece that dances between crunch, creaminess and heat. Street food elevated to an art form — messy, loud and completely irresistible.</p>
+        </div>
+      </div>
+
+      <!-- 5. Chicken Samosa -->
+      <div class="card">
+        <img class="card-img" src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800" alt="Chicken Samosa">
+        <div class="card-body">
+          <h3>Chicken Samosa</h3>
+          <p>Juicy minced chicken seasoned with garam masala, green chili and coriander, wrapped in a shatteringly crisp pastry triangle. Each bite releases a wave of aromatic steam. The meaty answer to every vegetarian snack craving — bold, satisfying and dangerously moreish.</p>
+        </div>
+      </div>
+
+      <!-- 6. Daal Puri -->
+      <div class="card">
+        <img class="card-img" src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=800" alt="Daal Puri">
+        <div class="card-body">
+          <h3>Daal Puri</h3>
+          <p>Soft, puffed puris stuffed with spiced red lentil paste, deep-fried until golden and blistered. Tear one open and the earthy, fragrant daal aroma hits you first. Perfect with a squeeze of lemon or a side of cucumber salad — pure comfort from the heart of Bangladesh.</p>
+        </div>
+      </div>
+
+      <!-- 7. Khichuri + Mejbani Gorur Mangsho -->
+      <div class="card">
+        <img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Khichuri_and_murgir_mangsho.jpg/800px-Khichuri_and_murgir_mangsho.jpg" alt="Khichuri with Mejbani Beef" onerror="this.src='https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800'">
+        <div class="card-body">
+          <h3>Khichuri with Mejbani Gorur Mangsho</h3>
+          <p>The soul of Chittagong hospitality. Soft, ghee-laced rice-and-lentil khichuri served alongside legendary Mejbani beef — slow-cooked, deeply spiced, fall-apart tender meat that melts into the rice. This is the feast that brings entire neighborhoods together. One plate and you understand why Chittagong people are famous for their big hearts.</p>
+        </div>
+      </div>
+
+      <!-- 8. Chapli Kabaab with Puri -->
+      <div class="card">
+        <img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Chapli_Kebab.jpg/800px-Chapli_Kebab.jpg" alt="Chapli Kabaab" onerror="this.src='https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=800'">
+        <div class="card-body">
+          <h3>Chapli Kabaab with Puri</h3>
+          <p>Flat, crispy-edged, juicy minced meat patties loaded with crushed coriander, pomegranate seeds, tomato and green chili. Served sizzling hot with puffy golden puris. The smoky, spicy aroma alone is enough to stop traffic. A Pashtun classic that found a second home in the port city.</p>
+        </div>
+      </div>
+
+      <!-- 9. Steam Momos -->
+      <div class="card">
+        <img class="card-img" src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=800" alt="Steam Momos">
+        <div class="card-body">
+          <h3>Steam Momos</h3>
+          <p>Delicate, hand-pleated dumplings filled with juicy minced chicken or vegetables, steamed until the wrappers turn translucent and the filling bursts with ginger-garlic heat. Served with fiery tomato-chili achar. Soft, steaming, addictive little pockets of Himalayan comfort that have conquered Chittagong streets.</p>
+        </div>
+      </div>
+
+      <!-- 10. Jhol Momo -->
+      <div class="card">
+        <img class="card-img" src="https://images.unsplash.com/photo-1625220194774-7ac9c8e0a0a0?w=800" alt="Jhol Momo">
+        <div class="card-body">
+          <h3>Jhol Momo with Broth</h3>
+          <p>Steamed momos swimming in a smoky, spicy, sesame-tomato broth that warms you from the inside out. Sip the tangy, nutty, chili-kissed jhol between each dumpling. It’s soup, dumpling and pure comfort in one bowl — the kind of dish that makes rainy nights in Chittagong feel magical.</p>
+        </div>
+      </div>
+
     </div>
   </div>
+
+  <footer>
+    <p>Next Stop <span>Chittagong</span> — Taste the city one legendary bite at a time.</p>
+    <p style="margin-top:10px;font-size:0.85rem;">Made with ❤️ for food lovers everywhere</p>
+  </footer>
 
   <script>
-    const foodItems = [
-      {
-        id: 'fuchka',
-        title: 'Bangladeshi Fuchka',
-        category: 'snacks',
-        desc: 'Crispy golden hollow spheres loaded with spiced mashed potatoes, yellow chickpeas, green chillies, and shredded boiled egg—served with a live continuous fountain of tangy tamarind tok!',
-        tag: 'Street Legend',
-        type: 'fountain_image',
-        mediaUrl: 'https://images.pexels.com/photos/14838589/pexels-photo-14838589.jpeg?auto=compress&cs=tinysrgb&w=800'
-      },
-      {
-        id: 'doi_fuchka',
-        title: 'Creamy Doi Fuchka',
-        category: 'snacks',
-        desc: 'Crispy shells packed with potato-chickpea filling, generously drenched in sweetened whipped yogurt, tamarind chutney, roasted spices, and crispy sev.',
-        tag: 'Sweet & Spicy',
-        type: 'image',
-        mediaUrl: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80'
-      },
-      {
-        id: 'shingara',
-        title: 'Bengali Shingara',
-        category: 'snacks',
-        desc: 'Flaky, short-crust pastry pyramids filled with a aromatic spiced potato-cauliflower mash and roasted peanuts, fried to golden perfection.',
-        tag: 'Classic Snack',
-        type: 'image',
-        mediaUrl: 'https://images.pexels.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80'
-      },
-      {
-        id: 'shingara_chaat',
-        title: 'Bangladeshi Shingara Chaat',
-        category: 'snacks',
-        desc: 'Crispy shingaras broken open and smothered in warm spicy chickpea ghugni, refreshing mint-yogurt sauce, tamarind glaze, chopped onions, and fresh cilantro.',
-        tag: 'Ultimate Chaat',
-        type: 'image',
-        mediaUrl: 'https://images.pexels.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=800&q=80'
-      },
-      {
-        id: 'chicken_samosa',
-        title: 'Crispy Chicken Samosa',
-        category: 'snacks',
-        desc: 'Thin, crispy pastry pockets filled with savory minced chicken, green chillies, onions, and traditional spice blends.',
-        tag: 'Crispy Non-Veg',
-        type: 'image',
-        mediaUrl: 'https://images.pexels.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80'
-      },
-      {
-        id: 'daal_puri',
-        title: 'Bangladeshi Daal Puri',
-        category: 'snacks',
-        desc: 'Fluffy, deep-fried flatbread stuffed with a dry, aromatic spiced red lentil (masoor dal) filling, served piping hot with green chillies or chutney.',
-        tag: 'Breakfast Favorite',
-        type: 'image',
-        mediaUrl: 'https://images.pexels.com/photo-1626132647523-66f5bf380027?auto=format&fit=crop&w=800&q=80'
-      },
-      {
-        id: 'khichuri_mejbani',
-        title: 'Bhuna Khichuri & Mejbani Beef',
-        category: 'heavy',
-        desc: 'Fragrant aromatic rice and lentil pilaf served alongside Chittagong’s iconic, deep-red, slow-cooked Mejbani beef curry cooked with rich, intense spices.',
-        tag: 'Chittagong Icon',
-        type: 'image',
-        mediaUrl: 'https://images.unsplash.com/photo-1633945274405-b6c8069047b0?auto=format&fit=crop&w=800&q=80'
-      },
-      {
-        id: 'chapli_kabaab_puri',
-        title: 'Chapli Kabaab with Hot Puri',
-        category: 'heavy',
-        desc: 'Juicy, pan-fried minced meat patties bursting with pomegranate seeds and herbs, paired with fresh, puffed golden puris.',
-        tag: 'Savory Feast',
-        type: 'image',
-        mediaUrl: 'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?auto=format&fit=crop&w=800&q=80'
-      },
-      {
-        id: 'steam_momos',
-        title: 'Steamed Chicken Momos',
-        category: 'snacks',
-        desc: 'Tender steamed dumplings stuffed with juicy seasoned chicken and served with a fiery tomato-sesame chili chutney.',
-        tag: 'Hot & Juicy',
-        type: 'image',
-        mediaUrl: 'https://images.unsplash.com/photo-1625220194771-7ebdea0b70b9?auto=format&fit=crop&w=800&q=80'
-      },
-      {
-        id: 'jhol_momo',
-        title: 'Authentic Jhol Momo',
-        category: 'snacks',
-        desc: 'Plump steamed dumplings submerged in a warm, tangy, and nutty spiced tomato-sesame broth.',
-        tag: 'Soupy Comfort',
-        type: 'image',
-        mediaUrl: 'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=800&q=80'
-      }
-    ];
-
-    function renderCards(filter = 'all') {
-      const grid = document.getElementById('foodGrid');
-      grid.innerHTML = '';
-
-      const items = filter === 'all' ? foodItems : foodItems.filter(item => item.category === filter);
-
-      items.forEach(item => {
-        const card = document.createElement('div');
-        card.className = 'food-card';
-
-        let mediaHtml = item.type === 'fountain_image'
-          ? `<div class="media-container"><img src="${item.mediaUrl}" alt="${item.title}"><canvas id="fountainCanvas" class="fountain-canvas"></canvas></div>`
-          : `<div class="media-container"><img src="${item.mediaUrl}" alt="${item.title}"></div>`;
-
-        card.innerHTML = `
-          ${mediaHtml}
-          <div class="card-content">
-            <span class="card-tag">${item.tag}</span>
-            <h3 class="card-title">${item.title}</h3>
-            <p class="card-desc">${item.desc}</p>
-            <button class="btn-view" onclick="openModal('${item.id}')">View Details</button>
-          </div>
-        `;
-
-        grid.appendChild(card);
+    // Smooth reveal on scroll
+    const cards = document.querySelectorAll('.card');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
       });
+    }, { threshold: 0.15 });
 
-      if (filter === 'all' || filter === 'snacks') {
-        setTimeout(initTokFountain, 100);
-      }
-    }
+    cards.forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(40px)';
+      card.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+      observer.observe(card);
+    });
 
-    function initTokFountain() {
-      const canvas = document.getElementById('fountainCanvas');
-      if (!canvas) return;
-      const ctx = canvas.getContext('2d');
-
-      canvas.width = canvas.parentElement.clientWidth;
-      canvas.height = canvas.parentElement.clientHeight;
-
-      let particles = [];
-
-      class Particle {
-        constructor() {
-          this.x = canvas.width / 2;
-          this.y = canvas.height - 15;
-          this.vx = (Math.random() - 0.5) * 3.5;
-          this.vy = -Math.random() * 6.5 - 4.5;
-          this.gravity = 0.22;
-          this.radius = Math.random() * 3 + 1.5;
-          this.alpha = 1;
-        }
-
-        update() {
-          this.vy += this.gravity;
-          this.x += this.vx;
-          this.y += this.vy;
-          this.alpha -= 0.015;
-        }
-
-        draw() {
-          ctx.save();
-          ctx.globalAlpha = this.alpha;
-          ctx.beginPath();
-          ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-          ctx.fillStyle = '#8bc34a';
-          ctx.fill();
-          ctx.restore();
-        }
-      }
-
-      function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        for(let i = 0; i < 2; i++) {
-          particles.push(new Particle());
-        }
-
-        particles.forEach((p, index) => {
-          p.update();
-          p.draw();
-          if (p.alpha <= 0 || p.y > canvas.height) {
-            particles.splice(index, 1);
-          }
-        });
-
-        requestAnimationFrame(animate);
-      }
-
-      animate();
-    }
-
-    function filterFood(category) {
-      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-      event.target.classList.add('active');
-      renderCards(category);
-    }
-
-    function openModal(id) {
-      const item = foodItems.find(f => f.id === id);
-      if(!item) return;
-
-      document.getElementById('modalTitle').innerText = item.title;
-      document.getElementById('modalDesc').innerText = item.desc;
-      document.getElementById('modalMediaContainer').innerHTML = `<img src="${item.mediaUrl}" class="modal-media" alt="${item.title}">`;
-
-      document.getElementById('foodModal').style.display = 'flex';
-    }
-
-    function closeModal() {
-      document.getElementById('foodModal').style.display = 'none';
-    }
-
-    window.onclick = function(event) {
-      const modal = document.getElementById('foodModal');
-      if (event.target == modal) {
-        closeModal();
-      }
-    }
-
-    renderCards();
+    // Gentle parallax on header
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      document.querySelector('header').style.backgroundPositionY = scrolled * 0.4 + 'px';
+    });
   </script>
 </body>
 </html>

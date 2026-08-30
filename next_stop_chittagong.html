@@ -1,18 +1,20 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Next Stop Chittagong - Deshi Street Food & Delicacies</title>
+  <title>Next Stop Chittagong - Authentic Bangladeshi Street Food</title>
   <style>
     :root {
-      --bg-color: #0f1016;
-      --card-bg: #1a1c23;
+      --bg-color: #0d130e;
+      --card-bg: #162218;
       --accent-color: #ff5722;
       --accent-hover: #e64a19;
+      --header-green: #10381e;
+      --header-accent: #2e7d32;
       --text-color: #f1f1f1;
-      --text-muted: #a0a0a0;
-      --fountain-color: #76ff03;
+      --text-muted: #a3b8a8;
+      --tok-fountain-color: #8bc34a;
     }
 
     * {
@@ -30,23 +32,28 @@
     }
 
     header {
-      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+      background: linear-gradient(rgba(10, 35, 18, 0.85), rgba(5, 20, 10, 0.9)), 
+                  url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
       text-align: center;
       padding: 60px 20px;
-      border-bottom: 3px solid var(--accent-color);
+      border-bottom: 4px solid var(--header-accent);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.6);
     }
 
     header h1 {
       font-size: 3rem;
-      color: var(--accent-color);
+      color: #76ff03;
       margin-bottom: 10px;
       text-transform: uppercase;
       letter-spacing: 2px;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
     }
 
     header p {
       font-size: 1.2rem;
-      color: var(--text-muted);
+      color: #c8e6c9;
+      max-width: 600px;
+      margin: 0 auto;
     }
 
     .filter-container {
@@ -60,16 +67,18 @@
     .filter-btn {
       background: var(--card-bg);
       color: var(--text-color);
-      border: 1px solid var(--accent-color);
-      padding: 10px 20px;
+      border: 1px solid var(--header-accent);
+      padding: 10px 22px;
       border-radius: 25px;
       cursor: pointer;
+      font-weight: 600;
       transition: all 0.3s ease;
     }
 
     .filter-btn:hover, .filter-btn.active {
-      background: var(--accent-color);
+      background: var(--header-accent);
       color: #fff;
+      box-shadow: 0 0 10px rgba(46, 125, 50, 0.5);
     }
 
     .container {
@@ -88,6 +97,7 @@
       background: var(--card-bg);
       border-radius: 12px;
       overflow: hidden;
+      border: 1px solid #1e3a24;
       box-shadow: 0 5px 15px rgba(0,0,0,0.5);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       position: relative;
@@ -95,7 +105,7 @@
 
     .food-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 8px 25px rgba(255, 87, 34, 0.3);
+      box-shadow: 0 8px 25px rgba(118, 255, 3, 0.2);
     }
 
     .media-container {
@@ -127,8 +137,8 @@
     }
 
     .card-title {
-      font-size: 1.4rem;
-      color: var(--accent-color);
+      font-size: 1.35rem;
+      color: #76ff03;
       margin-bottom: 8px;
     }
 
@@ -140,19 +150,20 @@
 
     .card-tag {
       display: inline-block;
-      background: rgba(255, 87, 34, 0.2);
-      color: var(--accent-color);
+      background: rgba(46, 125, 50, 0.3);
+      color: #a5d6a7;
       padding: 4px 10px;
       border-radius: 5px;
       font-size: 0.8rem;
       text-transform: uppercase;
+      font-weight: 600;
     }
 
     .btn-view {
       margin-top: 15px;
       width: 100%;
       padding: 10px;
-      background: var(--accent-color);
+      background: var(--header-accent);
       color: white;
       border: none;
       border-radius: 6px;
@@ -162,7 +173,7 @@
     }
 
     .btn-view:hover {
-      background: var(--accent-hover);
+      background: #388e3c;
     }
 
     .modal {
@@ -172,7 +183,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.85);
+      background: rgba(0,0,0,0.88);
       z-index: 100;
       justify-content: center;
       align-items: center;
@@ -186,6 +197,7 @@
       border-radius: 12px;
       overflow: hidden;
       position: relative;
+      border: 1px solid var(--header-accent);
     }
 
     .modal-media {
@@ -209,7 +221,7 @@
 
     @media (max-width: 600px) {
       header h1 {
-        font-size: 2rem;
+        font-size: 2.2rem;
       }
     }
   </style>
@@ -218,7 +230,7 @@
 
   <header>
     <h1>Next Stop Chittagong</h1>
-    <p>Shobcheye shwadhishhto street food ebong traditional khabarer thikana</p>
+    <p>Dive into the legendary flavors of Bangladeshi street food & rich culinary heritage</p>
   </header>
 
   <div class="container">
@@ -246,91 +258,91 @@
     const foodItems = [
       {
         id: 'fuchka',
-        title: 'Crispy Fuchka',
+        title: 'Bangladeshi Fuchka',
         category: 'snacks',
-        desc: 'Moshladar alur pur bhora shukno fuchka ebong sathe thakche shwadhishhto tetuler tok fountain!',
-        tag: 'Street Special',
+        desc: 'Crispy golden hollow spheres loaded with spiced mashed potatoes, yellow chickpeas, green chillies, and shredded boiled egg—served with a live continuous fountain of tangy tamarind tok!',
+        tag: 'Street Legend',
         type: 'fountain_image',
-        mediaUrl: 'https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=800&q=80'
+        mediaUrl: 'https://images.pexels.com/photos/14838589/pexels-photo-14838589.jpeg?auto=compress&cs=tinysrgb&w=800'
       },
       {
         id: 'doi_fuchka',
         title: 'Creamy Doi Fuchka',
         category: 'snacks',
-        desc: 'Mishhti doi, shew, ebong moshla chorano mon kora doi fuchka.',
-        tag: 'Popular',
+        desc: 'Crispy shells packed with potato-chickpea filling, generously drenched in sweetened whipped yogurt, tamarind chutney, roasted spices, and crispy sev.',
+        tag: 'Sweet & Spicy',
         type: 'image',
         mediaUrl: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80'
       },
       {
         id: 'shingara',
-        title: 'Traditional Shingara',
+        title: 'Bengali Shingara',
         category: 'snacks',
-        desc: 'Gorom gorom murmure alu ar badam pur bhora shingara.',
-        tag: 'Classic',
+        desc: 'Flaky, short-crust pastry pyramids filled with a aromatic spiced potato-cauliflower mash and roasted peanuts, fried to golden perfection.',
+        tag: 'Classic Snack',
         type: 'image',
-        mediaUrl: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80'
+        mediaUrl: 'https://images.pexels.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80'
       },
       {
         id: 'shingara_chaat',
-        title: 'Shingara Chaat',
+        title: 'Bangladeshi Shingara Chaat',
         category: 'snacks',
-        desc: 'Bhenge jawya shingara, ghugni, doi ebong vividh moshlar chatpata mix.',
-        tag: 'Spicy',
+        desc: 'Crispy shingaras broken open and smothered in warm spicy chickpea ghugni, refreshing mint-yogurt sauce, tamarind glaze, chopped onions, and fresh cilantro.',
+        tag: 'Ultimate Chaat',
         type: 'image',
-        mediaUrl: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=800&q=80'
+        mediaUrl: 'https://images.pexels.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=800&q=80'
       },
       {
         id: 'chicken_samosa',
-        title: 'Chicken Samosa',
+        title: 'Crispy Chicken Samosa',
         category: 'snacks',
-        desc: 'Moshladar chicken keema bhorti mugmuge samosa.',
-        tag: 'Non-Veg',
+        desc: 'Thin, crispy pastry pockets filled with savory minced chicken, green chillies, onions, and traditional spice blends.',
+        tag: 'Crispy Non-Veg',
         type: 'image',
-        mediaUrl: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80'
+        mediaUrl: 'https://images.pexels.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80'
       },
       {
         id: 'daal_puri',
-        title: 'Daal Puri',
+        title: 'Bangladeshi Daal Puri',
         category: 'snacks',
-        desc: 'Bhetore daaler pur ebong baire fula fula mualyim puri.',
-        tag: 'Breakfast Special',
+        desc: 'Fluffy, deep-fried flatbread stuffed with a dry, aromatic spiced red lentil (masoor dal) filling, served piping hot with green chillies or chutney.',
+        tag: 'Breakfast Favorite',
         type: 'image',
-        mediaUrl: 'https://images.unsplash.com/photo-1626132647523-66f5bf380027?auto=format&fit=crop&w=800&q=80'
+        mediaUrl: 'https://images.pexels.com/photo-1626132647523-66f5bf380027?auto=format&fit=crop&w=800&q=80'
       },
       {
         id: 'khichuri_mejbani',
-        title: 'Khichuri with Mejbani Gorur Mangsho',
+        title: 'Bhuna Khichuri & Mejbani Beef',
         category: 'heavy',
-        desc: 'Bhuna khichuri-r sathe Chittagong-er prasiddho Mejbani beef curry.',
-        tag: 'Chef Special',
+        desc: 'Fragrant aromatic rice and lentil pilaf served alongside Chittagong’s iconic, deep-red, slow-cooked Mejbani beef curry cooked with rich, intense spices.',
+        tag: 'Chittagong Icon',
         type: 'image',
         mediaUrl: 'https://images.unsplash.com/photo-1633945274405-b6c8069047b0?auto=format&fit=crop&w=800&q=80'
       },
       {
         id: 'chapli_kabaab_puri',
-        title: 'Chapli Kabaab with Puri',
+        title: 'Chapli Kabaab with Hot Puri',
         category: 'heavy',
-        desc: 'Peshawari moshladar chapli kabaab ar sathe gorom gorom puri.',
-        tag: 'Rich Flavor',
+        desc: 'Juicy, pan-fried minced meat patties bursting with pomegranate seeds and herbs, paired with fresh, puffed golden puris.',
+        tag: 'Savory Feast',
         type: 'image',
         mediaUrl: 'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?auto=format&fit=crop&w=800&q=80'
       },
       {
         id: 'steam_momos',
-        title: 'Steamed Momos',
+        title: 'Steamed Chicken Momos',
         category: 'snacks',
-        desc: 'Naram ebong juicy steamed chicken dumpling sathe jhal red chutney.',
-        tag: 'Healthy & Tasty',
+        desc: 'Tender steamed dumplings stuffed with juicy seasoned chicken and served with a fiery tomato-sesame chili chutney.',
+        tag: 'Hot & Juicy',
         type: 'image',
         mediaUrl: 'https://images.unsplash.com/photo-1625220194771-7ebdea0b70b9?auto=format&fit=crop&w=800&q=80'
       },
       {
         id: 'jhol_momo',
-        title: 'Jhol Momo',
+        title: 'Authentic Jhol Momo',
         category: 'snacks',
-        desc: 'Garam jhol or soup-e doobano nepali style juicy momo.',
-        tag: 'Soupy Delicacy',
+        desc: 'Plump steamed dumplings submerged in a warm, tangy, and nutty spiced tomato-sesame broth.',
+        tag: 'Soupy Comfort',
         type: 'image',
         mediaUrl: 'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=800&q=80'
       }
@@ -356,7 +368,7 @@
             <span class="card-tag">${item.tag}</span>
             <h3 class="card-title">${item.title}</h3>
             <p class="card-desc">${item.desc}</p>
-            <button class="btn-view" onclick="openModal('${item.id}')">Details Dekhun</button>
+            <button class="btn-view" onclick="openModal('${item.id}')">View Details</button>
           </div>
         `;
 
@@ -381,10 +393,10 @@
       class Particle {
         constructor() {
           this.x = canvas.width / 2;
-          this.y = canvas.height - 20;
-          this.vx = (Math.random() - 0.5) * 3;
-          this.vy = -Math.random() * 6 - 4;
-          this.gravity = 0.2;
+          this.y = canvas.height - 15;
+          this.vx = (Math.random() - 0.5) * 3.5;
+          this.vy = -Math.random() * 6.5 - 4.5;
+          this.gravity = 0.22;
           this.radius = Math.random() * 3 + 1.5;
           this.alpha = 1;
         }

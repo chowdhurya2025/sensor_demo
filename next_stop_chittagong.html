@@ -10,8 +10,6 @@
       --primary: #c0392b;
       --accent: #f39c12;
       --dark: #1a1a1a;
-      --cream: #fdf6e3;
-      --green: #27ae60;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -19,11 +17,10 @@
       background: linear-gradient(135deg, #1a1a1a 0%, #2c3e50 100%);
       color: #eee;
       line-height: 1.6;
-      overflow-x: hidden;
     }
     header {
       height: 100vh;
-      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)),
+      background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.75)),
                   url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1600') center/cover no-repeat;
       display: flex;
       flex-direction: column;
@@ -73,7 +70,6 @@
       font-size: 2.8rem;
       margin-bottom: 60px;
       color: var(--accent);
-      position: relative;
     }
     .section-title::after {
       content: '';
@@ -119,9 +115,8 @@
     .card-body p {
       font-size: 0.98rem;
       color: #ddd;
-      margin-bottom: 8px;
     }
-    /* Special fountain effect for Doi Fuchka */
+    /* Fountain effect for Doi Fuchka */
     .fountain-card { position: relative; }
     .fountain {
       position: absolute;
@@ -186,36 +181,36 @@
     <h2 class="section-title">Street Legends & Port City Feasts</h2>
     <div class="food-grid">
 
-      <!-- 1. Fuchka -->
+      <!-- Jhal / Classic Fuchka -->
       <div class="card">
-        <img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Puchka_or_Panipuri.jpg/800px-Puchka_or_Panipuri.jpg" alt="Fuchka" onerror="this.src='https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800'">
+        <img class="card-img" src="https://images.pexels.com/photos/17184404/pexels-photo-17184404.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Jhal Fuchka / Pani Puri">
         <div class="card-body">
-          <h3>Fuchka</h3>
-          <p>Crispy hollow spheres of pure joy, filled with spiced mashed potato, chickpeas and a splash of fiery tamarind water that explodes on your tongue. One bite and the streets of Chittagong roar to life. This is the original street-side adrenaline shot — tangy, spicy, crunchy, addictive.</p>
+          <h3>Jhal Fuchka</h3>
+          <p>Crispy hollow spheres filled with spiced mashed potato, chickpeas and a splash of fiery tamarind-mint water that explodes on your tongue. One bite and the streets of Chittagong roar to life — tangy, spicy, crunchy and completely addictive.</p>
         </div>
       </div>
 
-      <!-- 2. Doi Fuchka -->
+      <!-- Doi Fuchka -->
       <div class="card fountain-card">
-        <img class="card-img" src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800" alt="Doi Fuchka">
+        <img class="card-img" src="https://images.pexels.com/photos/29699504/pexels-photo-29699504.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Doi Fuchka">
         <div class="fountain"></div>
         <div class="splash"></div>
         <div class="card-body">
           <h3>Doi Fuchka</h3>
-          <p>The royal cousin of classic fuchka. Cool, creamy yogurt cascades over the crispy shells like a golden fountain of tok (sweet-tangy sauce), meeting spicy potato filling and a final shower of chaat masala. Every bite is a cooling explosion after the heat — pure Bangladeshi street poetry in edible form.</p>
+          <p>The royal cousin of classic fuchka. Cool, creamy yogurt cascades over the crispy shells like a golden fountain of tok, meeting spicy potato filling and a final shower of sev and chaat masala. Every bite is a cooling explosion after the heat — pure Bangladeshi street poetry.</p>
         </div>
       </div>
 
-      <!-- 3. Shingara -->
+      <!-- Shingara -->
       <div class="card">
         <img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Bengali_Singara.jpg/800px-Bengali_Singara.jpg" alt="Shingara" onerror="this.src='https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800'">
         <div class="card-body">
           <h3>Shingara</h3>
-          <p>Golden, flaky, pyramid-shaped perfection. Thin, buttery pastry hugging a fragrant filling of spiced potato, cauliflower and peas. Served piping hot with a sharp tomato-chili chutney. The ultimate tea-time companion that makes rainy Chittagong afternoons unforgettable.</p>
+          <p>Golden, flaky, pyramid-shaped perfection. Thin, buttery pastry hugging a fragrant filling of spiced potato, cauliflower and peas. Served piping hot with sharp tomato-chili chutney. The ultimate tea-time companion that makes rainy Chittagong afternoons unforgettable.</p>
         </div>
       </div>
 
-      <!-- 4. Shingara Chaat -->
+      <!-- Shingara Chaat -->
       <div class="card">
         <img class="card-img" src="https://images.unsplash.com/photo-1606491956689-2ea866880017?w=800" alt="Shingara Chaat">
         <div class="card-body">
@@ -224,54 +219,54 @@
         </div>
       </div>
 
-      <!-- 5. Chicken Samosa -->
+      <!-- Chicken Samosa (exact from your link) -->
       <div class="card">
-        <img class="card-img" src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800" alt="Chicken Samosa">
+        <img class="card-img" src="https://www.zorabian.com/wp-content/uploads/2023/01/Crisp-Chicken-Samosas-ready-at-your-fingertips-1024x665.jpg" alt="Chicken Samosa">
         <div class="card-body">
           <h3>Chicken Samosa</h3>
-          <p>Juicy minced chicken seasoned with garam masala, green chili and coriander, wrapped in a shatteringly crisp pastry triangle. Each bite releases a wave of aromatic steam. The meaty answer to every vegetarian snack craving — bold, satisfying and dangerously moreish.</p>
+          <p>Juicy minced chicken seasoned with garam masala, green chili and coriander, wrapped in a shatteringly crisp pastry triangle. Each bite releases a wave of aromatic steam. The meaty answer to every snack craving — bold, satisfying and dangerously moreish.</p>
         </div>
       </div>
 
-      <!-- 6. Daal Puri -->
+      <!-- Daal Puri -->
       <div class="card">
         <img class="card-img" src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=800" alt="Daal Puri">
         <div class="card-body">
           <h3>Daal Puri</h3>
-          <p>Soft, puffed puris stuffed with spiced red lentil paste, deep-fried until golden and blistered. Tear one open and the earthy, fragrant daal aroma hits you first. Perfect with a squeeze of lemon or a side of cucumber salad — pure comfort from the heart of Bangladesh.</p>
+          <p>Soft, puffed puris stuffed with spiced red lentil paste, deep-fried until golden and blistered. Tear one open and the earthy, fragrant daal aroma hits you first. Perfect with a squeeze of lemon or cucumber salad — pure comfort from the heart of Bangladesh.</p>
         </div>
       </div>
 
-      <!-- 7. Khichuri + Mejbani Gorur Mangsho -->
+      <!-- Khichuri + Mejbani Gorur Mangsho -->
       <div class="card">
         <img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Khichuri_and_murgir_mangsho.jpg/800px-Khichuri_and_murgir_mangsho.jpg" alt="Khichuri with Mejbani Beef" onerror="this.src='https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800'">
         <div class="card-body">
           <h3>Khichuri with Mejbani Gorur Mangsho</h3>
-          <p>The soul of Chittagong hospitality. Soft, ghee-laced rice-and-lentil khichuri served alongside legendary Mejbani beef — slow-cooked, deeply spiced, fall-apart tender meat that melts into the rice. This is the feast that brings entire neighborhoods together. One plate and you understand why Chittagong people are famous for their big hearts.</p>
+          <p>The soul of Chittagong hospitality. Soft, ghee-laced rice-and-lentil khichuri served alongside legendary Mejbani beef — slow-cooked, deeply spiced, fall-apart tender meat that melts into the rice. This is the feast that brings entire neighborhoods together.</p>
         </div>
       </div>
 
-      <!-- 8. Chapli Kabaab with Puri -->
+      <!-- Chapli Kabaab with Puri -->
       <div class="card">
-        <img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Chapli_Kebab.jpg/800px-Chapli_Kebab.jpg" alt="Chapli Kabaab" onerror="this.src='https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=800'">
+        <img class="card-img" src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=800" alt="Chapli Kabaab with Puri">
         <div class="card-body">
           <h3>Chapli Kabaab with Puri</h3>
           <p>Flat, crispy-edged, juicy minced meat patties loaded with crushed coriander, pomegranate seeds, tomato and green chili. Served sizzling hot with puffy golden puris. The smoky, spicy aroma alone is enough to stop traffic. A Pashtun classic that found a second home in the port city.</p>
         </div>
       </div>
 
-      <!-- 9. Steam Momos -->
+      <!-- Steam Momos -->
       <div class="card">
         <img class="card-img" src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=800" alt="Steam Momos">
         <div class="card-body">
           <h3>Steam Momos</h3>
-          <p>Delicate, hand-pleated dumplings filled with juicy minced chicken or vegetables, steamed until the wrappers turn translucent and the filling bursts with ginger-garlic heat. Served with fiery tomato-chili achar. Soft, steaming, addictive little pockets of Himalayan comfort that have conquered Chittagong streets.</p>
+          <p>Delicate, hand-pleated dumplings filled with juicy minced chicken or vegetables, steamed until the wrappers turn translucent and the filling bursts with ginger-garlic heat. Served with fiery tomato-chili achar. Soft, steaming, addictive little pockets of Himalayan comfort.</p>
         </div>
       </div>
 
-      <!-- 10. Jhol Momo -->
+      <!-- Jhol Momo -->
       <div class="card">
-        <img class="card-img" src="https://images.unsplash.com/photo-1625220194774-7ac9c8e0a0a0?w=800" alt="Jhol Momo">
+        <img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Jhol_Momo.jpg/800px-Jhol_Momo.jpg" alt="Jhol Momo with Broth" onerror="this.src='https://images.unsplash.com/photo-1625220194774-7ac9c8e0a0a0?w=800'">
         <div class="card-body">
           <h3>Jhol Momo with Broth</h3>
           <p>Steamed momos swimming in a smoky, spicy, sesame-tomato broth that warms you from the inside out. Sip the tangy, nutty, chili-kissed jhol between each dumpling. It’s soup, dumpling and pure comfort in one bowl — the kind of dish that makes rainy nights in Chittagong feel magical.</p>
@@ -287,7 +282,6 @@
   </footer>
 
   <script>
-    // Smooth reveal on scroll
     const cards = document.querySelectorAll('.card');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -305,7 +299,6 @@
       observer.observe(card);
     });
 
-    // Gentle parallax on header
     window.addEventListener('scroll', () => {
       const scrolled = window.pageYOffset;
       document.querySelector('header').style.backgroundPositionY = scrolled * 0.4 + 'px';

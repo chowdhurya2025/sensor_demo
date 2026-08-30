@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Next Stop Chittagong</title>
+  <title>Next Stop Chittagong – Homemade USA Stall</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -20,7 +20,7 @@
     }
     header {
       height: 100vh;
-      background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.75)),
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)),
                   url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1600') center/cover no-repeat;
       display: flex;
       flex-direction: column;
@@ -28,27 +28,36 @@
       align-items: center;
       text-align: center;
       position: relative;
+      padding: 0 20px;
     }
     header h1 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2.8rem, 8vw, 5.5rem);
+      font-size: clamp(2.6rem, 7vw, 5rem);
       color: #fff;
       text-shadow: 0 4px 20px rgba(0,0,0,0.8);
-      letter-spacing: 2px;
+      letter-spacing: 1px;
       animation: fadeUp 1.2s ease;
     }
-    header p {
-      font-size: clamp(1.1rem, 3vw, 1.6rem);
-      max-width: 700px;
-      margin-top: 1rem;
+    header .tagline {
+      font-size: clamp(1.15rem, 3vw, 1.7rem);
+      max-width: 780px;
+      margin-top: 1.2rem;
       color: var(--accent);
+      font-weight: 400;
       animation: fadeUp 1.5s ease;
+    }
+    header .sub {
+      margin-top: 1rem;
+      font-size: 1.05rem;
+      color: #ddd;
+      max-width: 620px;
+      animation: fadeUp 1.8s ease;
     }
     .scroll-hint {
       position: absolute;
       bottom: 40px;
       font-size: 0.9rem;
-      opacity: 0.7;
+      opacity: 0.75;
       animation: bounce 2s infinite;
     }
     @keyframes fadeUp {
@@ -67,8 +76,8 @@
     .section-title {
       text-align: center;
       font-family: 'Playfair Display', serif;
-      font-size: 2.8rem;
-      margin-bottom: 60px;
+      font-size: 2.6rem;
+      margin-bottom: 50px;
       color: var(--accent);
     }
     .section-title::after {
@@ -77,7 +86,7 @@
       width: 80px;
       height: 4px;
       background: var(--primary);
-      margin: 15px auto 0;
+      margin: 14px auto 0;
       border-radius: 2px;
     }
     .food-grid {
@@ -108,19 +117,19 @@
     .card-body { padding: 28px; }
     .card-body h3 {
       font-family: 'Playfair Display', serif;
-      font-size: 1.7rem;
+      font-size: 1.65rem;
       color: var(--accent);
       margin-bottom: 12px;
     }
     .card-body p {
-      font-size: 0.98rem;
+      font-size: 0.97rem;
       color: #ddd;
     }
-    /* Fountain effect for Doi Fuchka */
+    /* Fountain effect only on Doi Fuchka */
     .fountain-card { position: relative; }
     .fountain {
       position: absolute;
-      top: 180px;
+      top: 175px;
       left: 50%;
       transform: translateX(-50%);
       width: 8px;
@@ -134,13 +143,13 @@
     }
     @keyframes pour {
       0% { height: 0; opacity: 0; }
-      30% { height: 70px; opacity: 0.85; }
-      70% { height: 70px; opacity: 0.85; }
+      30% { height: 65px; opacity: 0.85; }
+      70% { height: 65px; opacity: 0.85; }
       100% { height: 0; opacity: 0; }
     }
     .splash {
       position: absolute;
-      top: 250px;
+      top: 240px;
       left: 50%;
       width: 40px;
       height: 8px;
@@ -173,31 +182,32 @@
 <body>
   <header>
     <h1>Next Stop Chittagong</h1>
-    <p>A fiery, tangy, soul-satisfying journey through the streets & kitchens of Bangladesh’s port city</p>
-    <div class="scroll-hint">↓ Scroll to taste the city ↓</div>
+    <p class="tagline">Homemade Chittagong Street Food • Freshly Made in the USA</p>
+    <p class="sub">Authentic recipes, cooked from scratch with love — bringing the bold, tangy, soul-warming flavors of Chittagong right to your neighborhood stall.</p>
+    <div class="scroll-hint">↓ Come taste the difference ↓</div>
   </header>
 
   <div class="container">
-    <h2 class="section-title">Street Legends & Port City Feasts</h2>
+    <h2 class="section-title">Our Homemade Specials</h2>
     <div class="food-grid">
 
-      <!-- Jhal / Classic Fuchka -->
+      <!-- Jhal Fuchka -->
       <div class="card">
-        <img class="card-img" src="https://images.pexels.com/photos/17184404/pexels-photo-17184404.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Jhal Fuchka / Pani Puri">
+        <img class="card-img" src="https://images.pexels.com/photos/17184404/pexels-photo-17184404.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Jhal Fuchka">
         <div class="card-body">
           <h3>Jhal Fuchka</h3>
-          <p>Crispy hollow spheres filled with spiced mashed potato, chickpeas and a splash of fiery tamarind-mint water that explodes on your tongue. One bite and the streets of Chittagong roar to life — tangy, spicy, crunchy and completely addictive.</p>
+          <p>Crispy hollow shells filled with our house-spiced potato & chickpea mix, finished with fiery homemade tamarind-mint water. One bite and you’ll understand why this is the stall favorite.</p>
         </div>
       </div>
 
-      <!-- Doi Fuchka -->
+      <!-- Doi Fuchka – YOUR exact image -->
       <div class="card fountain-card">
-        <img class="card-img" src="https://images.pexels.com/photos/29699504/pexels-photo-29699504.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Doi Fuchka">
+        <img class="card-img" src="https://www.lifeberrys.com/img/article/dahi-puri-chatt-1654691794-lb.jpg" alt="Doi Fuchka">
         <div class="fountain"></div>
         <div class="splash"></div>
         <div class="card-body">
           <h3>Doi Fuchka</h3>
-          <p>The royal cousin of classic fuchka. Cool, creamy yogurt cascades over the crispy shells like a golden fountain of tok, meeting spicy potato filling and a final shower of sev and chaat masala. Every bite is a cooling explosion after the heat — pure Bangladeshi street poetry.</p>
+          <p>Cool, creamy yogurt poured over crispy puris like a sweet-tangy fountain, loaded with spicy potato filling, sev and chaat masala. The ultimate balance of heat and cooling comfort — made fresh every day.</p>
         </div>
       </div>
 
@@ -206,7 +216,7 @@
         <img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Bengali_Singara.jpg/800px-Bengali_Singara.jpg" alt="Shingara" onerror="this.src='https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800'">
         <div class="card-body">
           <h3>Shingara</h3>
-          <p>Golden, flaky, pyramid-shaped perfection. Thin, buttery pastry hugging a fragrant filling of spiced potato, cauliflower and peas. Served piping hot with sharp tomato-chili chutney. The ultimate tea-time companion that makes rainy Chittagong afternoons unforgettable.</p>
+          <p>Golden, flaky, homemade pyramids stuffed with spiced potato, cauliflower and peas. Served hot with our sharp tomato-chili chutney. Perfect with a cup of chai.</p>
         </div>
       </div>
 
@@ -215,25 +225,25 @@
         <img class="card-img" src="https://images.unsplash.com/photo-1606491956689-2ea866880017?w=800" alt="Shingara Chaat">
         <div class="card-body">
           <h3>Shingara Chaat</h3>
-          <p>Crushed shingara meets cool yogurt, tangy tamarind, fiery green chutney, onions, coriander and a blizzard of sev. A deconstructed masterpiece that dances between crunch, creaminess and heat. Street food elevated to an art form — messy, loud and completely irresistible.</p>
+          <p>Crushed shingara tossed with yogurt, tamarind, green chutney, onions, coriander and plenty of sev. Crunchy, creamy, tangy and spicy all at once — pure homemade street magic.</p>
         </div>
       </div>
 
-      <!-- Chicken Samosa (exact from your link) -->
+      <!-- Chicken Samosa -->
       <div class="card">
         <img class="card-img" src="https://www.zorabian.com/wp-content/uploads/2023/01/Crisp-Chicken-Samosas-ready-at-your-fingertips-1024x665.jpg" alt="Chicken Samosa">
         <div class="card-body">
           <h3>Chicken Samosa</h3>
-          <p>Juicy minced chicken seasoned with garam masala, green chili and coriander, wrapped in a shatteringly crisp pastry triangle. Each bite releases a wave of aromatic steam. The meaty answer to every snack craving — bold, satisfying and dangerously moreish.</p>
+          <p>Juicy homemade chicken filling seasoned with garam masala and green chili, wrapped in a shatteringly crisp pastry. Freshly fried and dangerously addictive.</p>
         </div>
       </div>
 
-      <!-- Daal Puri -->
+      <!-- Daal Puri – best matching free image -->
       <div class="card">
-        <img class="card-img" src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=800" alt="Daal Puri">
+        <img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Dal_puri_and_aloo_dom.jpg/800px-Dal_puri_and_aloo_dom.jpg" alt="Daal Puri" onerror="this.src='https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=800'">
         <div class="card-body">
           <h3>Daal Puri</h3>
-          <p>Soft, puffed puris stuffed with spiced red lentil paste, deep-fried until golden and blistered. Tear one open and the earthy, fragrant daal aroma hits you first. Perfect with a squeeze of lemon or cucumber salad — pure comfort from the heart of Bangladesh.</p>
+          <p>Soft, puffed puris stuffed with our spiced red lentil filling and deep-fried until golden. Tear one open and the fragrant homemade aroma hits you instantly. A true comfort classic.</p>
         </div>
       </div>
 
@@ -242,16 +252,16 @@
         <img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Khichuri_and_murgir_mangsho.jpg/800px-Khichuri_and_murgir_mangsho.jpg" alt="Khichuri with Mejbani Beef" onerror="this.src='https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800'">
         <div class="card-body">
           <h3>Khichuri with Mejbani Gorur Mangsho</h3>
-          <p>The soul of Chittagong hospitality. Soft, ghee-laced rice-and-lentil khichuri served alongside legendary Mejbani beef — slow-cooked, deeply spiced, fall-apart tender meat that melts into the rice. This is the feast that brings entire neighborhoods together.</p>
+          <p>Soft, ghee-laced homemade khichuri paired with our special slow-cooked Mejbani-style beef. Tender, deeply spiced meat that melts into the rice — the heart of Chittagong hospitality, made right here in the USA.</p>
         </div>
       </div>
 
-      <!-- Chapli Kabaab with Puri -->
+      <!-- Chapli Kabaab with Puri – YOUR exact image -->
       <div class="card">
-        <img class="card-img" src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=800" alt="Chapli Kabaab with Puri">
+        <img class="card-img" src="https://sa-halalexpress.com/cdn/shop/files/chapli-kabab.png" alt="Chapli Kabaab with Puri">
         <div class="card-body">
           <h3>Chapli Kabaab with Puri</h3>
-          <p>Flat, crispy-edged, juicy minced meat patties loaded with crushed coriander, pomegranate seeds, tomato and green chili. Served sizzling hot with puffy golden puris. The smoky, spicy aroma alone is enough to stop traffic. A Pashtun classic that found a second home in the port city.</p>
+          <p>Flat, crispy-edged, juicy homemade chapli patties loaded with coriander, tomato and green chili. Served sizzling with soft puris. Smoky, spicy and unforgettable.</p>
         </div>
       </div>
 
@@ -260,16 +270,16 @@
         <img class="card-img" src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=800" alt="Steam Momos">
         <div class="card-body">
           <h3>Steam Momos</h3>
-          <p>Delicate, hand-pleated dumplings filled with juicy minced chicken or vegetables, steamed until the wrappers turn translucent and the filling bursts with ginger-garlic heat. Served with fiery tomato-chili achar. Soft, steaming, addictive little pockets of Himalayan comfort.</p>
+          <p>Delicate hand-pleated dumplings filled with juicy chicken or veggies, steamed until the wrappers turn translucent. Served with our fiery homemade tomato-chili achar.</p>
         </div>
       </div>
 
       <!-- Jhol Momo -->
       <div class="card">
-        <img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Jhol_Momo.jpg/800px-Jhol_Momo.jpg" alt="Jhol Momo with Broth" onerror="this.src='https://images.unsplash.com/photo-1625220194774-7ac9c8e0a0a0?w=800'">
+        <img class="card-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Jhol_Momo.jpg/800px-Jhol_Momo.jpg" alt="Jhol Momo" onerror="this.src='https://images.unsplash.com/photo-1625220194774-7ac9c8e0a0a0?w=800'">
         <div class="card-body">
           <h3>Jhol Momo with Broth</h3>
-          <p>Steamed momos swimming in a smoky, spicy, sesame-tomato broth that warms you from the inside out. Sip the tangy, nutty, chili-kissed jhol between each dumpling. It’s soup, dumpling and pure comfort in one bowl — the kind of dish that makes rainy nights in Chittagong feel magical.</p>
+          <p>Steamed momos swimming in our smoky, spicy sesame-tomato broth. Sip the tangy, nutty jhol between every dumpling — pure homemade comfort in a bowl.</p>
         </div>
       </div>
 
@@ -277,8 +287,8 @@
   </div>
 
   <footer>
-    <p>Next Stop <span>Chittagong</span> — Taste the city one legendary bite at a time.</p>
-    <p style="margin-top:10px;font-size:0.85rem;">Made with ❤️ for food lovers everywhere</p>
+    <p><span>Next Stop Chittagong</span> — Homemade with love in the USA</p>
+    <p style="margin-top:8px;font-size:0.9rem;">Fresh. Authentic. Made from scratch every day.</p>
   </footer>
 
   <script>
@@ -297,11 +307,6 @@
       card.style.transform = 'translateY(40px)';
       card.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
       observer.observe(card);
-    });
-
-    window.addEventListener('scroll', () => {
-      const scrolled = window.pageYOffset;
-      document.querySelector('header').style.backgroundPositionY = scrolled * 0.4 + 'px';
     });
   </script>
 </body>
